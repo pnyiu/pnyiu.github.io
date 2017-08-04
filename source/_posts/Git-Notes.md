@@ -29,7 +29,15 @@ It is common to work with multiple branches. For example, if we are working the 
     Please, commit your changes or stash them before you can switch branches.
     Aborting
 
-
-
-
 ![Workflow](https://docs.google.com/drawings/d/1OfHSNc2aVpOdHyTT1z7sMNRG8K7Z0QwgKGbIARsatS8/pub?w=950&amp;h=780)
+
+# Useful Commands
+## Update remote url
+    $ git remote -v
+    origin  https://github.com/calvinypn/calvinypn.github.io (fetch)
+    origin  https://github.com/calvinypn/calvinypn.github.io (push)
+    $ git remote set-url origin https://github.com/pnyiu/pnyiu.github.io
+    $ git remote -v
+    origin  https://github.com/pnyiu/pnyiu.github.io (fetch)
+    origin  https://github.com/pnyiu/pnyiu.github.io (push)
+
