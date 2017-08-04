@@ -1,7 +1,8 @@
 ---
 title: Git - Notes
 date: 2017-08-02 14:19:40
-tags:
+tags: Git
+categories: SCM
 ---
 # Conflicts with modified files when switch to another branch 
 
