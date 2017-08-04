@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Calvin&#39;s Home</title>
+  <title>SCM | Calvin&#39;s Home</title>
   <meta name="author" content="Calvin Yiu">
   
   
@@ -99,61 +99,26 @@
 
   <div class="container">
   	<div class="content">
-    	 <div class="page-header page-header-inverse ">
-  <h1 class="title title-inverse ">Calvin&#39;s Home</h1>
+    	 
+
+<!-- title -->
+<div class="page-header page-header-inverse ">
+  <h1 class="archive-title-category title title-inverse ">SCM</h1>
 </div>
 
 <div class="row page">
-
-	
-	<div class="col-md-9">
-	
-
-		<div class="slogan">
-      <i class="fa fa-heart"></i>
-      Thanks to Lucas&#39; mama
-</div>    
-		<div id="top_search"></div>
-		<div class="mypage">
-		
-		<!-- title and entry -->
-        <!-- render top articles firstly -->
-        
-		
-            
-		
-            
-		
-            
-		
-        
-        <!-- render other articles -->
-        
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-08-04 </div>
-			<div class="article-title"><a href="/2017/08/04/CORS-AJAX/" >CORS AJAX</a></div>						
-		</h3>
+  <!-- cols -->
+  
+  <div class="col-md-9">
 	
 
+	  <div id="top_search"></div>
 
-			  <div class="entry">
-  <div class="row">
-	
-	
-		
-	
-	</div>
-  <a type="button" href="/2017/08/04/CORS-AJAX/#more" class="btn btn-default more">Read More</a>
-</div>
-
-           
-		
-           
-			  
+      
+         <!-- display as entry -->
+	     <div class="mypage">
+	       
+		     
 	
 	<!-- display as entry -->	
 		<h3 class="title">
@@ -163,7 +128,7 @@
 	
 
 
-			  <div class="entry">
+		     <div class="entry">
   <div class="row">
 	
 	
@@ -196,72 +161,24 @@ Aborting
   <a type="button" href="/2017/08/02/Git-Notes/#more" class="btn btn-default more">Read More</a>
 </div>
 
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-08-01 </div>
-			<div class="article-title"><a href="/2017/08/01/HTTP-Cache/" >HTTP Cache</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<p>Recently, I have a chance to revisit HTTP cache mechanism. Let’s turn on the FireFox developer tool and launch <a href="http://www.google.com.hk" target="_blank" rel="external">http://www.google.com.hk</a>:</p>
-<img src="/images/2017-07-28 10_18_23-Google.png">
-<p>We will use the googlelogo_color_120x44dp.png for the illustration below.</p>
-<p>For the first time, we can see  the server response with 200 (OK) for below images and the response header Last-Modified: “Thu, 08 Dec 2016 01:00:57 GMT”:</p>
-<img src="/images/2017-07-27 15_05_28-Google.png">
-<img src="/images/2017-07-28 10_45_22-Google.png">
-<p>Then, we reload (by Reload/Refresh or F5 the page. The server response with 304 (Not Modified) for the images:</p>
-<img src="/images/2017-07-28 10_41_41-Google.png">
-<p>We can see the request header If-Modified-Since “Thu, 08 Dec 2016 01:00:57 GMT”:</p>
-<img src="/images/2017-07-28 15_01_05-Google.png">
-<p>The server will check whether the file has been modified since the date specified in the header. If no, then it will return 304 (Not Modified) and the browse will use the file in the local cache. Otherwise, it will return the new content with status 200 (OK),</p>
-<p>If we press enter at address bar again:</p>
-<img src="/images/2017-07-28 14_40_21-Blogger_ Big Head Guy - Edit post.png">
-<p>We can see there is no request to the server as the local browser cache of the images are still “fresh”:</p>
-<img src="/images/2017-07-28 14_43_05-Google.png">
-<p>ETag/If-None-Match is similar to Last-Modified/If-Modified-Since. The server will assign a tag (~version) for each file. If the file has been updated, then a new ETag will be generated. However, it is server dependent. If we have two web servers behind the load balancer, then same file will have different E-tag and may make the If-None-Match return false. Therefore, it is suggested to disable ETag.</p>
-<p>If both an entity tag and a Last-Modified value have been provided by the origin server, SHOULD use both validators in cache-conditional requests. This allows both HTTP/1.0 and HTTP/1.1 caches to respond appropriately. (rfc2616)</p>
-<p>We can use below headers to control the cache stored in browser / proxy servers:</p>
-<img src="/images/2017-07-28 15_32_31-Google.png">
-<p>The max-age directive takes priority over Expires, so if max-age is present in a response.</p>
-
-	
-	</div>
-  <a type="button" href="/2017/08/01/HTTP-Cache/#more" class="btn btn-default more">Read More</a>
-</div>
-
-           
-		
-
-		</div>
-
-		<!-- pagination -->
-		<div>
-  		<center>
-		<div class="pagination">
+	       
+	     </div>
+	     <div>
+	       <center>
+	         <div class="pagination">
 <ul class="pagination">
 	 
 </ul>
 </div>
 
-  		</center>
-		</div>
+	       </center>
+	     </div>	
+      
 
-		
-		
-	</div> <!-- col-md-9 -->
+</div> <!-- col-md-9/col-md-12 -->
 
-	
-		<div class="col-md-3">
+
+<div class="col-md-3">
 	<div id="sidebar">
 	
 			
@@ -280,13 +197,13 @@ Aborting
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
-		
-			<li><a href="/tags/Git/">Git<span>1</span></a></li>
-		
 			<li><a href="/tags/Apache/">Apache<span>2</span></a></li>
 		
 			<li><a href="/tags/COSR/">COSR<span>1</span></a></li>
+		
+			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
+		
+			<li><a href="/tags/Git/">Git<span>1</span></a></li>
 		
 		 
 		</ul>
@@ -332,9 +249,7 @@ Aborting
 	</div> <!-- sidebar -->
 </div> <!-- col-md-3 -->
 
-	
-	
-</div> <!-- row-fluid -->
+
 
 
 	</div>

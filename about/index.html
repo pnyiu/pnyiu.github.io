@@ -3,17 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>HTTP Cache | Calvin&#39;s Home</title>
+  <title>about | Calvin&#39;s Home</title>
   <meta name="author" content="Calvin Yiu">
   
-  <meta name="description" content="Recently, I have a chance to revisit HTTP cache mechanism. Let’s turn on the FireFox developer tool and launch http://www.google.com.hk:
-
-We will use ">
+  <meta name="description" content="Hello~">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="HTTP Cache"/>
+  <meta property="og:title" content="about"/>
   <meta property="og:site_name" content="Calvin&#39;s Home"/>
 
   
@@ -104,11 +102,9 @@ We will use ">
   <div class="container">
   	<div class="content">
     	 
-
-
 	
 		<div class="page-header page-header-inverse ">		
-			<h1 class="title title-inverse "> HTTP Cache</h1>
+			<h1 class="title title-inverse "> about</h1>
 		</div>		
 	
 
@@ -117,37 +113,17 @@ We will use ">
 
 
 
-<div class="row post">
+<div class="row page">
 	<!-- cols -->
 	
-	<div id="top_meta"></div>
-	<div class="col-md-9">
+	<div class="col-md-12">
 	
 
 	<!-- content -->
 	<div class="mypage">		
 	  		
 
-	  <p>Recently, I have a chance to revisit HTTP cache mechanism. Let’s turn on the FireFox developer tool and launch <a href="http://www.google.com.hk" target="_blank" rel="external">http://www.google.com.hk</a>:</p>
-<img src="/images/2017-07-28 10_18_23-Google.png">
-<p>We will use the googlelogo_color_120x44dp.png for the illustration below.</p>
-<p>For the first time, we can see  the server response with 200 (OK) for below images and the response header Last-Modified: “Thu, 08 Dec 2016 01:00:57 GMT”:</p>
-<img src="/images/2017-07-27 15_05_28-Google.png">
-<img src="/images/2017-07-28 10_45_22-Google.png">
-<p>Then, we reload (by Reload/Refresh or F5 the page. The server response with 304 (Not Modified) for the images:</p>
-<img src="/images/2017-07-28 10_41_41-Google.png">
-<p>We can see the request header If-Modified-Since “Thu, 08 Dec 2016 01:00:57 GMT”:</p>
-<img src="/images/2017-07-28 15_01_05-Google.png">
-<p>The server will check whether the file has been modified since the date specified in the header. If no, then it will return 304 (Not Modified) and the browse will use the file in the local cache. Otherwise, it will return the new content with status 200 (OK),</p>
-<p>If we press enter at address bar again:</p>
-<img src="/images/2017-07-28 14_40_21-Blogger_ Big Head Guy - Edit post.png">
-<p>We can see there is no request to the server as the local browser cache of the images are still “fresh”:</p>
-<img src="/images/2017-07-28 14_43_05-Google.png">
-<p>ETag/If-None-Match is similar to Last-Modified/If-Modified-Since. The server will assign a tag (~version) for each file. If the file has been updated, then a new ETag will be generated. However, it is server dependent. If we have two web servers behind the load balancer, then same file will have different E-tag and may make the If-None-Match return false. Therefore, it is suggested to disable ETag.</p>
-<p>If both an entity tag and a Last-Modified value have been provided by the origin server, SHOULD use both validators in cache-conditional requests. This allows both HTTP/1.0 and HTTP/1.1 caches to respond appropriately. (rfc2616)</p>
-<p>We can use below headers to control the cache stored in browser / proxy servers:</p>
-<img src="/images/2017-07-28 15_32_31-Google.png">
-<p>The max-age directive takes priority over Expires, so if max-age is present in a response.</p>
+	  <p>Hello~</p>
 	  
 	</div>
 
@@ -156,16 +132,6 @@ We will use ">
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2017/08/02/Git-Notes/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
-
-        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
-
-		
-          <li class="next disabled"><a>Next<i class="fa fa-arrow-circle-o-right"></i></a></li>
-        
-	
 </ul>
 </div>
 
@@ -174,58 +140,12 @@ We will use ">
 
     <!-- share -->
     
-        
-
-        
-
-    
 	
 	<!-- comment -->
 	
-<section id="comment">
-  <h2 class="title">Comments</h2>
-  
-</section>
-
 
 	</div> <!-- col-md-9/col-md-12 -->
 		
-	
-	<div id="side_meta">
-		<div class="col-md-3" id="post_meta"> 
-
-	<!-- date -->
-	
-	<div class="meta-widget">
-	<i class="fa fa-clock-o"></i>
-	2017-08-01 
-	</div>
-	
-
-	<!-- categories -->
-    
-
-	<!-- tags -->
-	
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
-    <ul id="tags" class="tag_box list-unstyled collapse in">	  
-	    
-  <li><a href="/tags/Apache/">Apache<span>2</span></a></li>
-    </ul>
-	</div>
-	
-
-	<!-- toc -->
-	<div class="meta-widget">
-	
-	</div>
-	
-    <hr>
-	
-</div><!-- col-md-3 -->
-
-	</div>
 		
 
 </div><!-- row -->
