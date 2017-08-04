@@ -3,8 +3,11 @@ title: Git - Notes
 date: 2017-08-02 14:19:40
 tags: Git
 categories: SCM
+toc: true 
+comments: false
+comment: false
 ---
-# Conflicts with modified files when switch to another branch 
+## Conflicts with modified files when switch to another branch 
 
 It is common to work with multiple branches. For example, if we are working the file test.html:
 1. Update test.html in master branch
@@ -31,8 +34,8 @@ It is common to work with multiple branches. For example, if we are working the 
 
 ![Workflow](https://docs.google.com/drawings/d/1OfHSNc2aVpOdHyTT1z7sMNRG8K7Z0QwgKGbIARsatS8/pub?w=950&amp;h=780)
 
-# Useful Commands
-## Update remote url
+## Useful Commands
+### Update remote url
     $ git remote -v
     origin  https://github.com/calvinypn/calvinypn.github.io (fetch)
     origin  https://github.com/calvinypn/calvinypn.github.io (push)
