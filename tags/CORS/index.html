@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>COSR | Calvin&#39;s Home</title>
+  <title>CORS | Calvin&#39;s Home</title>
   <meta name="author" content="Calvin Yiu">
   
   
@@ -103,7 +103,7 @@
 
 <!-- title -->
 <div class="page-header page-header-inverse ">
-  <h1 class="archive-title-tag title title-inverse ">COSR</h1>
+  <h1 class="archive-title-tag title title-inverse ">CORS</h1>
 </div>
 
 <div class="row page">
@@ -132,7 +132,14 @@
   <div class="row">
 	
 	
-		
+		<p>For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts (e.g. AJAX request). For below scenario, we need to modify the HTTP response headers:</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS</a></p>
+<img src="https://docs.google.com/drawings/d/15RJbrTnTn1dATx_Eujw73JyrifygW1Xv5PYHIjD0IfY/pub?w=417&amp;h=279">
+<figure class="highlight xml"><figcaption><span>httpd.conf</span><a href="https://httpd.apache.org/docs/2.4/configuring.html" target="_blank" rel="external">Apache-httpd.conf</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Location</span> "/<span class="attr">service</span>/" &gt;</span></div><div class="line">  SetEnvIf Origin "http(s)?://(b|c)?(.domain.com)$" AccessControlAllowOrigin=$0</div><div class="line">  Header add Access-Control-Allow-Origin %&#123;AccessControlAllowOrigin&#125;e env=AccessControlAllowOrigin</div><div class="line">  Header set Access-Control-Allow-Credentials true</div><div class="line"><span class="tag">&lt;/<span class="name">Location</span>&gt;</span></div></pre></td></tr></table></figure>
+<p> The above example will allow requests to services under <em>/service/</em> from http or https request from <em>b.domain</em> and <em>c.domain</em>. If we want the request to aware of the HTTP cookies, then we need add <code>Header set Access-Control-Allow-Credentials true</code>.</p>
+<figure class="highlight javascript"><figcaption><span>Sample AJAX program</span><a href="http://api.jquery.com/jquery.ajax/" target="_blank" rel="external">jQuery.ajax()</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;script language=<span class="string">"Javascript"</span>&gt;</div><div class="line">$.ajax(&#123;</div><div class="line">  type: <span class="string">"GET"</span>,</div><div class="line">  url: <span class="string">"https://a.domain.com/service/test.jsp"</span>,</div><div class="line">  xhrFields: &#123;</div><div class="line">      withCredentials: <span class="literal">true</span></div><div class="line">   &#125;,</div><div class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">    alert( <span class="string">"success"</span> );</div><div class="line">  &#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert( <span class="string">"error"</span> );</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<p><code>withCredentials: true</code> is used to mark <code>XMLHttpRequest</code> to aware of HTTP cookies (e.g. session id).</p>
+
 	
 	</div>
   <a type="button" href="/2017/08/04/CORS-AJAX/#more" class="btn btn-default more">Read More</a>
@@ -174,13 +181,15 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Git/">Git<span>1</span></a></li>
-		
 			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
 		
-			<li><a href="/tags/COSR/">COSR<span>1</span></a></li>
+			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
+		
+			<li><a href="/tags/Git/">Git<span>1</span></a></li>
 		
 			<li><a href="/tags/Apache/">Apache<span>2</span></a></li>
+		
+			<li><a href="/tags/COSR/">COSR<span>0</span></a></li>
 		
 		 
 		</ul>
