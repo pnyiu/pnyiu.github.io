@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Calvin&#39;s Home</title>
+  <title>Hexo | Calvin&#39;s Home</title>
   <meta name="author" content="Calvin Yiu">
   
   
@@ -99,40 +99,26 @@
 
   <div class="container">
   	<div class="content">
-    	 <div class="page-header page-header-inverse ">
-  <h1 class="title title-inverse ">Calvin&#39;s Home</h1>
+    	 
+
+<!-- title -->
+<div class="page-header page-header-inverse ">
+  <h1 class="archive-title-tag title title-inverse ">Hexo</h1>
 </div>
 
 <div class="row page">
-
+  <!-- cols -->
+  
+  <div class="col-md-9">
 	
-	<div class="col-md-9">
-	
 
-		<div class="slogan">
-      <i class="fa fa-heart"></i>
-      Thanks to Lucas&#39; mama
-</div>    
-		<div id="top_search"></div>
-		<div class="mypage">
-		
-		<!-- title and entry -->
-        <!-- render top articles firstly -->
-        
-		
-            
-		
-            
-		
-            
-		
-            
-		
-        
-        <!-- render other articles -->
-        
-           
-			  
+	  <div id="top_search"></div>
+
+      
+         <!-- display as entry -->
+	     <div class="mypage">
+	       
+		     
 	
 	<!-- display as entry -->	
 		<h3 class="title">
@@ -142,7 +128,7 @@
 	
 
 
-			  <div class="entry">
+		     <div class="entry">
   <div class="row">
 	
 	
@@ -184,155 +170,24 @@ c2(no)->op2->e</textarea><textarea id="flowchart-0-options" style="display: none
   <a type="button" href="/2017/08/08/Hexo-Notes/#more" class="btn btn-default more">Read More</a>
 </div>
 
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-08-04 </div>
-			<div class="article-title"><a href="/2017/08/04/CORS-AJAX/" >CORS AJAX</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<p>For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts (e.g. AJAX request). For below scenario, we need to modify the HTTP response headers:</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS</a></p>
-<img src="https://docs.google.com/drawings/d/15RJbrTnTn1dATx_Eujw73JyrifygW1Xv5PYHIjD0IfY/pub?w=417&amp;h=279">
-<figure class="highlight xml"><figcaption><span>httpd.conf</span><a href="https://httpd.apache.org/docs/2.4/configuring.html" target="_blank" rel="external">Apache-httpd.conf</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Location</span> "/<span class="attr">service</span>/" &gt;</span></div><div class="line">  SetEnvIf Origin "http(s)?://(b|c)?(.domain.com)$" AccessControlAllowOrigin=$0</div><div class="line">  Header add Access-Control-Allow-Origin %&#123;AccessControlAllowOrigin&#125;e env=AccessControlAllowOrigin</div><div class="line">  Header set Access-Control-Allow-Credentials true</div><div class="line"><span class="tag">&lt;/<span class="name">Location</span>&gt;</span></div></pre></td></tr></table></figure>
-<p> The above example will allow requests to services under <em>/service/</em> from http or https request from <em>b.domain</em> and <em>c.domain</em>. If we want the request to aware of the HTTP cookies, then we need add <code>Header set Access-Control-Allow-Credentials true</code>.</p>
-<figure class="highlight javascript"><figcaption><span>Sample AJAX program</span><a href="http://api.jquery.com/jquery.ajax/" target="_blank" rel="external">jQuery.ajax()</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;script language=<span class="string">"Javascript"</span>&gt;</div><div class="line">$.ajax(&#123;</div><div class="line">  type: <span class="string">"GET"</span>,</div><div class="line">  url: <span class="string">"https://a.domain.com/service/test.jsp"</span>,</div><div class="line">  xhrFields: &#123;</div><div class="line">      withCredentials: <span class="literal">true</span></div><div class="line">   &#125;,</div><div class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">    alert( <span class="string">"success"</span> );</div><div class="line">  &#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert( <span class="string">"error"</span> );</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<p><code>withCredentials: true</code> is used to mark <code>XMLHttpRequest</code> to aware of HTTP cookies (e.g. session id).</p>
-
-	
-	</div>
-  <a type="button" href="/2017/08/04/CORS-AJAX/#more" class="btn btn-default more">Read More</a>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-08-02 </div>
-			<div class="article-title"><a href="/2017/08/02/Git-Notes/" >Git - Notes</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Conflicts-with-modified-files-when-switch-to-another-branch"><a href="#Conflicts-with-modified-files-when-switch-to-another-branch" class="headerlink" title="Conflicts with modified files when switch to another branch"></a>Conflicts with modified files when switch to another branch</h2><p>It is common to work with multiple branches. For example, if we are working the file test.html:</p>
-<ol>
-<li>Update test.html in master branch</li>
-<li>Switch to testbranch branch, update and commit the changes to git</li>
-<li>Switch to master branch, update the test.html and do not commit the changes Then, switch to testbranch but failed</li>
-</ol>
-<pre><code>$ git init
-$ git status
-$ echo &quot;Created at master branch&quot; &gt; test.html
-$ git add test.html
-$ git commit -m &quot;Commit test.html at master branch&quot;
-$ git checkout -b testbranch
-$ echo &quot;Modified at testbranch&quot; &gt;&gt; test.html
-$ git add .
-$ git commit -m &quot;Commit at testbranch&quot;
-$ git checkout master
-$ echo &quot;Modified at master branch&quot; &gt;&gt; test.html
-$ git checkout testbranch
-error: Your local changes to the following files would be overwritten by checkout:
-test.html
-Please, commit your changes or stash them before you can switch branches.
-Aborting
-</code></pre><p><img src="https://docs.google.com/drawings/d/1OfHSNc2aVpOdHyTT1z7sMNRG8K7Z0QwgKGbIARsatS8/pub?w=950&amp;h=780" alt="Workflow"></p>
-<h2 id="Useful-Commands"><a href="#Useful-Commands" class="headerlink" title="Useful Commands"></a>Useful Commands</h2><h3 id="Update-remote-url"><a href="#Update-remote-url" class="headerlink" title="Update remote url"></a>Update remote url</h3><pre><code>$ git remote -v
-origin  https://github.com/calvinypn/calvinypn.github.io (fetch)
-origin  https://github.com/calvinypn/calvinypn.github.io (push)
-$ git remote set-url origin https://github.com/pnyiu/pnyiu.github.io
-$ git remote -v
-origin  https://github.com/pnyiu/pnyiu.github.io (fetch)
-origin  https://github.com/pnyiu/pnyiu.github.io (push)
-</code></pre>
-	
-	</div>
-  <a type="button" href="/2017/08/02/Git-Notes/#more" class="btn btn-default more">Read More</a>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-08-01 </div>
-			<div class="article-title"><a href="/2017/08/01/HTTP-Cache/" >HTTP Cache</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<p>Recently, I have a chance to revisit HTTP cache mechanism. Let’s turn on the FireFox developer tool and launch <a href="http://www.google.com.hk" target="_blank" rel="external">http://www.google.com.hk</a>:</p>
-<img src="/images/2017-07-28 10_18_23-Google.png">
-<p>We will use the googlelogo_color_120x44dp.png for the illustration below.</p>
-<p>For the first time, we can see  the server response with 200 (OK) for below images and the response header Last-Modified: “Thu, 08 Dec 2016 01:00:57 GMT”:</p>
-<img src="/images/2017-07-27 15_05_28-Google.png">
-<img src="/images/2017-07-28 10_45_22-Google.png">
-<p>Then, we reload (by Reload/Refresh or F5 the page. The server response with 304 (Not Modified) for the images:</p>
-<img src="/images/2017-07-28 10_41_41-Google.png">
-<p>We can see the request header If-Modified-Since “Thu, 08 Dec 2016 01:00:57 GMT”:</p>
-<img src="/images/2017-07-28 15_01_05-Google.png">
-<p>The server will check whether the file has been modified since the date specified in the header. If no, then it will return 304 (Not Modified) and the browse will use the file in the local cache. Otherwise, it will return the new content with status 200 (OK),</p>
-<p>If we press enter at address bar again:</p>
-<img src="/images/2017-07-28 14_40_21-Blogger_ Big Head Guy - Edit post.png">
-<p>We can see there is no request to the server as the local browser cache of the images are still “fresh”:</p>
-<img src="/images/2017-07-28 14_43_05-Google.png">
-<p>ETag/If-None-Match is similar to Last-Modified/If-Modified-Since. The server will assign a tag (~version) for each file. If the file has been updated, then a new ETag will be generated. However, it is server dependent. If we have two web servers behind the load balancer, then same file will have different E-tag and may make the If-None-Match return false. Therefore, it is suggested to disable ETag.</p>
-<p>If both an entity tag and a Last-Modified value have been provided by the origin server, SHOULD use both validators in cache-conditional requests. This allows both HTTP/1.0 and HTTP/1.1 caches to respond appropriately. (rfc2616)</p>
-<p>We can use below headers to control the cache stored in browser / proxy servers:</p>
-<img src="/images/2017-07-28 15_32_31-Google.png">
-<p>The max-age directive takes priority over Expires, so if max-age is present in a response.</p>
-
-	
-	</div>
-  <a type="button" href="/2017/08/01/HTTP-Cache/#more" class="btn btn-default more">Read More</a>
-</div>
-
-           
-		
-
-		</div>
-
-		<!-- pagination -->
-		<div>
-  		<center>
-		<div class="pagination">
+	       
+	     </div>
+	     <div>
+	       <center>
+	         <div class="pagination">
 <ul class="pagination">
 	 
 </ul>
 </div>
 
-  		</center>
-		</div>
+	       </center>
+	     </div>	
+      
 
-		
-		
-	</div> <!-- col-md-9 -->
+</div> <!-- col-md-9/col-md-12 -->
 
-	
-		<div class="col-md-3">
+
+<div class="col-md-3">
 	<div id="sidebar">
 	
 			
@@ -351,13 +206,13 @@ origin  https://github.com/pnyiu/pnyiu.github.io (push)
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
+			<li><a href="/tags/Apache/">Apache<span>2</span></a></li>
 		
 			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
 		
-			<li><a href="/tags/Apache/">Apache<span>2</span></a></li>
-		
 			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
+		
+			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
 		
 			<li><a href="/tags/Git/">Git<span>1</span></a></li>
 		
@@ -409,9 +264,7 @@ origin  https://github.com/pnyiu/pnyiu.github.io (push)
 	</div> <!-- sidebar -->
 </div> <!-- col-md-3 -->
 
-	
-	
-</div> <!-- row-fluid -->
+
 
 
 	</div>
