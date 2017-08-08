@@ -6,7 +6,11 @@
   <title>Git - Notes | Calvin&#39;s Home</title>
   <meta name="author" content="Calvin Yiu">
   
-  <meta name="description" content="Conflicts with modified files when switch to another branchIt is common to work with multiple branches. For example, if we are working the file test.h">
+  <meta name="description" content="Conflicts with modified files when switch to another branchIt is common to work with multiple branches. For example, if we are working the file test.html:
+
+Update test.html in master branch
+Switch to testbranch branch, update and commit the changes to git
+Switch to master branch, update the test.html and do not commit the changes Then, switch to testbranch but failed">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -130,25 +134,12 @@
 <ol>
 <li>Update test.html in master branch</li>
 <li>Switch to testbranch branch, update and commit the changes to git</li>
-<li>Switch to master branch, update the test.html and do not commit the changes Then, switch to testbranch but failed</li>
+<li><p>Switch to master branch, update the test.html and do not commit the changes Then, switch to testbranch but failed</p>
+<a id="more"></a>
+<p> $ git init<br> $ git status<br> $ echo “Created at master branch” &gt; test.html<br> $ git add test.html<br> $ git commit -m “Commit test.html at master branch”<br> $ git checkout -b testbranch<br> $ echo “Modified at testbranch” &gt;&gt; test.html<br> $ git add .<br> $ git commit -m “Commit at testbranch”<br> $ git checkout master<br> $ echo “Modified at master branch” &gt;&gt; test.html<br> $ git checkout testbranch<br> error: Your local changes to the following files would be overwritten by checkout:<br> test.html<br> Please, commit your changes or stash them before you can switch branches.<br> Aborting</p>
+</li>
 </ol>
-<pre><code>$ git init
-$ git status
-$ echo &quot;Created at master branch&quot; &gt; test.html
-$ git add test.html
-$ git commit -m &quot;Commit test.html at master branch&quot;
-$ git checkout -b testbranch
-$ echo &quot;Modified at testbranch&quot; &gt;&gt; test.html
-$ git add .
-$ git commit -m &quot;Commit at testbranch&quot;
-$ git checkout master
-$ echo &quot;Modified at master branch&quot; &gt;&gt; test.html
-$ git checkout testbranch
-error: Your local changes to the following files would be overwritten by checkout:
-test.html
-Please, commit your changes or stash them before you can switch branches.
-Aborting
-</code></pre><p><img src="https://docs.google.com/drawings/d/1OfHSNc2aVpOdHyTT1z7sMNRG8K7Z0QwgKGbIARsatS8/pub?w=950&amp;h=780" alt="Workflow"></p>
+<p><img src="https://docs.google.com/drawings/d/1OfHSNc2aVpOdHyTT1z7sMNRG8K7Z0QwgKGbIARsatS8/pub?w=950&amp;h=780" alt="Workflow"></p>
 <h2 id="Useful-Commands"><a href="#Useful-Commands" class="headerlink" title="Useful Commands"></a>Useful Commands</h2><h3 id="Update-remote-url"><a href="#Update-remote-url" class="headerlink" title="Update remote url"></a>Update remote url</h3><pre><code>$ git remote -v
 origin  https://github.com/calvinypn/calvinypn.github.io (fetch)
 origin  https://github.com/calvinypn/calvinypn.github.io (push)
