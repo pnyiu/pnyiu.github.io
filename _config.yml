@@ -43,6 +43,10 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
+flowchart:
+  raphael: /js/raphael.js  # optional, the source url of raphael.js
+  flowchart: /js/flowchart.js # optional, the source url of flowchart.js
+  options: # options used for `drawSVG`  
   
 # Home page setting
 # path: Root path for your blogs index page. (default = '')

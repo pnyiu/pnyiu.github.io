@@ -5,14 +5,16 @@ tags:
 - CORS
 - AJAX
 - Apache 
+categories:
+- Web server
 ---
 For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts (e.g. AJAX request). For below scenario, we need to modify the HTTP response headers:
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 
 {% img "https://docs.google.com/drawings/d/15RJbrTnTn1dATx_Eujw73JyrifygW1Xv5PYHIjD0IfY/pub?w=417&amp;h=279" %}
-
-{% codeblock httpd.conf lang:xml https://httpd.apache.org/docs/2.4/configuring.html Apache-httpd.conf %}
+<!-- more -->
+{% codeblock httpd.conf lang:apache https://httpd.apache.org/docs/2.4/configuring.html Apache-httpd.conf %}
 <Location "/service/" >
   SetEnvIf Origin "http(s)?://(b|c)?(.domain.com)$" AccessControlAllowOrigin=$0
   Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin

@@ -9,7 +9,7 @@ Recently, I have a chance to revisit HTTP cache mechanism. Let's turn on the Fir
 {% img "/images/2017-07-28 10_18_23-Google.png"  %}
 
 We will use the googlelogo_color_120x44dp.png for the illustration below.
-
+<!-- more -->
 For the first time, we can see  the server response with 200 (OK) for below images and the response header Last-Modified: "Thu, 08 Dec 2016 01:00:57 GMT":
 
 {% img "/images/2017-07-27 15_05_28-Google.png"  %}
