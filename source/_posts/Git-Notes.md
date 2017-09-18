@@ -39,7 +39,46 @@ git clone https://github.com/pnyiu/hexo-theme-freemind.git themes/freemind
             └── source
 {% endcodeblock %}
 The blog repository simply ignore the freemind repository [stackoverflow](https://stackoverflow.com/questions/10360342/git-clone-into-another-existing-git-repo).
-
+2. **Scenario two** - use git submodules   
+   {% blockquote Pro Git https://git-scm.com/book/en/v2/Git-Tools-Submodules "7.11 Git Tools - Submodules" %}
+   Submodules allow you to keep a Git repository as a subdirectory of another Git repository. This lets you clone another repository into your project and keep your commits separate.
+   
+   It’s quite likely that if you’re using submodules, you’re doing so because you really want to work on the code in the submodule at the same time as you’re working on the code in the main project (or across several submodules). Otherwise you would probably instead be using a simpler dependency management system (such as Maven or Rubygems).   
+   {% endblockquote %}
+   Use `git submodule add <repo_url>` to add submodule as below:
+   {% codeblock line_number:false lang:bash %}   
+   $ git submodule add https://github.com/pnyiu/hexo-theme-freemind.git themes/freemind
+   Cloning into 'themes/freemind'...
+   remote: Counting objects: 1390, done.
+   remote: Compressing objects: 100% (22/22), done.
+   remote: Total 1390 (delta 9), reused 5 (delta 0), pack-reused 1367
+   Receiving objects: 100% (1390/1390), 1.91 MiB | 302.00 KiB/s, done.
+   Resolving deltas: 100% (814/814), done.
+   Checking connectivity... done.
+   $ tree -L 1 -a
+   .
+   ├── _config.yml
+   ├── db.json
+   ├── .deploy_git
+   ├── .git
+   ├── .gitignore
+   ├── .gitmodules
+   ├── node_modules
+   ├── package.json
+   ├── public
+   ├── scaffolds
+   ├── source
+   └── themes
+   $ cat .gitmodules
+   [submodule "themes/freemind"]
+          path = themes/freemind
+          url = https://github.com/pnyiu/hexo-theme-freemind.git
+   {% endcodeblock %}
+   - New file `.gitmodules` is created to keep track the submodules path and url.
+   - Git would get the changes and update the files in the subdirectory but will leave the sub-repository    in what’s called a `detached HEAD` state. This means that there is no local working branch (like `master`, for example) tracking changes.
+   - Doesn’t track submodule contents when you're not in that directory
+   - For **new project** with submodules, use (`git submodule init` and `git submodule update`) or `git clone --recursive` to initialize and fetch all data from that project and submodules.
+   
 ## Conflicts with modified files when switch to another branch 
 
 It is common to work with multiple branches. For example, if we are working the file test.html:
