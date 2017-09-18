@@ -6,9 +6,10 @@
   <title>Vagrant - virtual box | Calvin&#39;s Home</title>
   <meta name="author" content="Calvin Yiu">
   
-  <meta name="description" content="Vagrant + virtual box vm with host-based network
-The vm can access internet
-The host can access the services running on the vm (e.g. httpd) 
+  <meta name="description" content="Vagrant + virtual box vm with host-based networkWith the host-only networking on Virtual Box:
+
+the virtual machines can talk to each other (under same network e.g. vboxnet1) and the host
+the virtual machines can access internet
 
 Follow below steps to configure a host-only network vm and provision by vagrant:
 
@@ -138,9 +139,10 @@ Last (but not least ^_^), edit your Vagrantfile:config.vm.provider &#34;virtualb
 	<div class="mypage">		
 	  		
 
-	  <h2 id="Vagrant-virtual-box-vm-with-host-based-network"><a href="#Vagrant-virtual-box-vm-with-host-based-network" class="headerlink" title="Vagrant + virtual box vm with host-based network"></a>Vagrant + virtual box vm with host-based network</h2><ul>
-<li>The vm can access internet</li>
-<li>The host can access the services running on the vm (e.g. httpd) </li>
+	  <h2 id="Vagrant-virtual-box-vm-with-host-based-network"><a href="#Vagrant-virtual-box-vm-with-host-based-network" class="headerlink" title="Vagrant + virtual box vm with host-based network"></a>Vagrant + virtual box vm with host-based network</h2><p>With the host-only networking on Virtual Box:</p>
+<ul>
+<li>the virtual machines can talk to each other (under same network e.g. vboxnet1) and the host</li>
+<li>the virtual machines can access internet</li>
 </ul>
 <p>Follow below steps to configure a <a href="https://www.virtualbox.org/manual/ch06.html#network_hostonly" target="_blank" rel="external">host-only network</a> vm and provision by vagrant:</p>
 <ol>
