@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo | Calvin&#39;s Home</title>
+  <title>Oracle VM | Calvin&#39;s Home</title>
   <meta name="author" content="Calvin Yiu">
   
   
@@ -103,7 +103,7 @@
 
 <!-- title -->
 <div class="page-header page-header-inverse ">
-  <h1 class="archive-title-tag title title-inverse ">Hexo</h1>
+  <h1 class="archive-title-tag title title-inverse ">Oracle VM</h1>
 </div>
 
 <div class="row page">
@@ -122,8 +122,8 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
-			<div class="date"> 2017-08-08 </div>
-			<div class="article-title"><a href="/2017/08/08/Hexo-Notes/" >Hexo Notes</a></div>						
+			<div class="date"> 2017-08-17 </div>
+			<div class="article-title"><a href="/2017/08/17/Oracle-VM-resize-root-disk/" >Oracle VM - resize root disk</a></div>						
 		</h3>
 	
 
@@ -132,11 +132,11 @@
   <div class="row">
 	
 	
-		<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># Install Node.js</span></div><div class="line">sudo apt-get install nodejs</div><div class="line"></div><div class="line"><span class="comment"># Install node package manager (npm)</span></div><div class="line">sudo apt-get install npm</div><div class="line"></div><div class="line"><span class="comment"># Install git </span></div><div class="line">sudo apt-get install git <span class="comment"># yum install git-core </span></div><div class="line"></div><div class="line"><span class="comment"># Install hexo</span></div><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<h3 id="Hexo-site-folder-and-install-theme"><a href="#Hexo-site-folder-and-install-theme" class="headerlink" title="Hexo site folder and install theme"></a>Hexo site folder and install theme</h3><p>In this blog, I will install <a href="https://hexo.io/themes/" target="_blank" rel="external">freemind</a>:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo init blog <span class="comment">#blog is the folder to contains all hexo related files</span></div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/wzpan/hexo-theme-freemind.git themes/freemind</div></pre></td></tr></table></figure><br>
+		<ol>
+<li>Check current virtual disk<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># fdisk -l /dev/xvda</span></div><div class="line"></div><div class="line">Disk /dev/xvda: 21.5 GB, 21474836480 bytes, 41943040 sectors</div><div class="line">Units = sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 512 bytes</div><div class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</div><div class="line">Disk label <span class="built_in">type</span>: dos</div><div class="line">Disk identifier: 0x000b3dc8</div><div class="line"></div><div class="line">    Device Boot      Start         End      Blocks   Id  System</div><div class="line">/dev/xvda1   *        2048     1026047      512000   83  Linux</div><div class="line">/dev/xvda2         1026048    41943039    20458496   8e  Linux LVM</div></pre></td></tr></table></figure>
 	
 	</div>
-  <a type="button" href="/2017/08/08/Hexo-Notes/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2017/08/17/Oracle-VM-resize-root-disk/#more" class="btn btn-default more">Read More</a>
 </div>
 
 	       
@@ -181,23 +181,23 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
+			<li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li>
+		
+			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
+		
 			<li><a href="/tags/Git/">Git<span>1</span></a></li>
 		
-			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
+			<li><a href="/tags/Virtual-Box/">Virtual Box<span>1</span></a></li>
+		
+			<li><a href="/tags/Linux/">Linux<span>1</span></a></li>
+		
+			<li><a href="/tags/Apache/">Apache<span>2</span></a></li>
 		
 			<li><a href="/tags/Vagrant/">Vagrant<span>1</span></a></li>
 		
 			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
 		
-			<li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li>
-		
-			<li><a href="/tags/Linux/">Linux<span>1</span></a></li>
-		
-			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
-		
-			<li><a href="/tags/Apache/">Apache<span>2</span></a></li>
-		
-			<li><a href="/tags/Virtual-Box/">Virtual Box<span>1</span></a></li>
+			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
 		
 		 
 		</ul>

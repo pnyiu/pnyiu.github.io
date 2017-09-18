@@ -3,16 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>CORS AJAX | Calvin&#39;s Home</title>
+  <title>Vagrant - virtual box | Calvin&#39;s Home</title>
   <meta name="author" content="Calvin Yiu">
   
-  <meta name="description" content="For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts (e.g. AJAX request). For below scenario, we need to modify the HTTP response headers:
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">
+  <meta name="description" content="Vagrant + virtual box vm with host-based network
+The vm can access internet
+The host can access the services running on the vm (e.g. httpd) 
+
+Follow below steps to configure a host-only network vm and provision by vagrant:
+
+Create a host-only network on Oracle VM VirtualBox ManagerFile -&amp;gt; Preferences -&amp;gt; Network -&amp;gt; Host-only Networks
+   
+   
+By default, it will auto assign all required values for IPv4 Address, network mask. If DHCP server option is enabled, it will auto assign the required values.
+
+VirtualBox creates a new virtual interface on the host:root@localhost:~$ ifconfig vboxnet1vboxnet1  Link encap:Ethernet  HWaddr 0a:00:27:00:00:01          inet addr:172.28.128.1  Bcast:172.28.128.255  Mask:255.255.255.0          inet6 addr: fe80::800:27ff:fe00:1/64 Scope:Link          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1          RX packets:0 errors:0 dropped:0 overruns:0 frame:0          TX packets:96 errors:0 dropped:0 overruns:0 carrier:0          collisions:0 txqueuelen:1000          RX bytes:0 (0.0 B)  TX bytes:21440 (21.4 KB) 
+Last (but not least ^_^), edit your Vagrantfile:config.vm.provider &#34;virtualbox&#34; do |vb|  config.vm.network &#34;private_network&#34;, :type =&amp;gt; &#39;dhcp&#39;, :name =&amp;gt; &#39;vboxnet1&#39;, :adapter =&amp;gt; 2end">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="CORS AJAX"/>
+  <meta property="og:title" content="Vagrant - virtual box"/>
   <meta property="og:site_name" content="Calvin&#39;s Home"/>
 
   
@@ -107,7 +118,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">
 
 	
 		<div class="page-header page-header-inverse ">		
-			<h1 class="title title-inverse "> CORS AJAX</h1>
+			<h1 class="title title-inverse "> Vagrant - virtual box</h1>
 		</div>		
 	
 
@@ -127,14 +138,22 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">
 	<div class="mypage">		
 	  		
 
-	  <p>For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts (e.g. AJAX request). For below scenario, we need to modify the HTTP response headers:</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS</a></p>
-<img src="https://docs.google.com/drawings/d/15RJbrTnTn1dATx_Eujw73JyrifygW1Xv5PYHIjD0IfY/pub?w=417&amp;h=279">
+	  <h2 id="Vagrant-virtual-box-vm-with-host-based-network"><a href="#Vagrant-virtual-box-vm-with-host-based-network" class="headerlink" title="Vagrant + virtual box vm with host-based network"></a>Vagrant + virtual box vm with host-based network</h2><ul>
+<li>The vm can access internet</li>
+<li>The host can access the services running on the vm (e.g. httpd) </li>
+</ul>
+<p>Follow below steps to configure a <a href="https://www.virtualbox.org/manual/ch06.html#network_hostonly" target="_blank" rel="external">host-only network</a> vm and provision by vagrant:</p>
+<ol>
+<li><p>Create a host-only network on Oracle VM VirtualBox Manager<br>File -&gt; Preferences -&gt; Network -&gt; Host-only Networks</p>
+  <img src="/images/2017-09-18 12_20_58-Virtual Box Manager - Host-only network 1.png"> 
+  <img src="/images/2017-09-18 12_20_58-Virtual Box Manager - Host-only network 2.png"> 
+<p>By default, it will auto assign all required values for IPv4 Address, network mask. If DHCP server option is enabled, it will auto assign the required values.</p>
+</li>
+<li>VirtualBox creates a new virtual interface on the host:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">root@localhost:~$ ifconfig vboxnet1</div><div class="line">vboxnet1  Link encap:Ethernet  HWaddr 0a:00:27:00:00:01</div><div class="line">          inet addr:172.28.128.1  Bcast:172.28.128.255  Mask:255.255.255.0</div><div class="line">          inet6 addr: fe80::800:27ff:fe00:1/64 Scope:Link</div><div class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</div><div class="line">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</div><div class="line">          TX packets:96 errors:0 dropped:0 overruns:0 carrier:0</div><div class="line">          collisions:0 txqueuelen:1000</div><div class="line">          RX bytes:0 (0.0 B)  TX bytes:21440 (21.4 KB)</div></pre></td></tr></table></figure> </li>
+<li>Last (but not least ^_^), edit your <a href="https://www.vagrantup.com/docs/vagrantfile/" target="_blank" rel="external">Vagrantfile</a>:<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">config.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> <span class="params">|vb|</span></div><div class="line">  config.vm.network <span class="string">"private_network"</span>, <span class="symbol">:type</span> =&gt; <span class="string">'dhcp'</span>, <span class="symbol">:name</span> =&gt; <span class="string">'vboxnet1'</span>, <span class="symbol">:adapter</span> =&gt; <span class="number">2</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure> 
+</li>
+</ol>
 <a id="more"></a>
-<figure class="highlight apache"><figcaption><span>httpd.conf</span><a href="https://httpd.apache.org/docs/2.4/configuring.html" target="_blank" rel="external">Apache-httpd.conf</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="section">&lt;Location "/service/" &gt;</span></div><div class="line">  <span class="attribute">SetEnvIf</span> Origin <span class="string">"http(s)?://(b|c)?(.domain.com)$"</span> AccessControlAllowOrigin=<span class="number">$0</span></div><div class="line">  <span class="attribute"><span class="nomarkup">Header</span></span> add Access-Control-Allow-Origin <span class="variable">%&#123;AccessControlAllowOrigin&#125;</span>e env=AccessControlAllowOrigin</div><div class="line">  <span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Credentials true</div><div class="line"><span class="section">&lt;/Location&gt;</span></div></pre></td></tr></table></figure>
-<p> The above example will allow requests to services under <em>/service/</em> from http or https request from <em>b.domain</em> and <em>c.domain</em>. If we want the request to aware of the HTTP cookies, then we need add <code>Header set Access-Control-Allow-Credentials true</code>.</p>
-<figure class="highlight javascript"><figcaption><span>Sample AJAX program</span><a href="http://api.jquery.com/jquery.ajax/" target="_blank" rel="external">jQuery.ajax()</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;script language=<span class="string">"Javascript"</span>&gt;</div><div class="line">$.ajax(&#123;</div><div class="line">  type: <span class="string">"GET"</span>,</div><div class="line">  url: <span class="string">"https://a.domain.com/service/test.jsp"</span>,</div><div class="line">  xhrFields: &#123;</div><div class="line">      withCredentials: <span class="literal">true</span></div><div class="line">   &#125;,</div><div class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">    alert( <span class="string">"success"</span> );</div><div class="line">  &#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert( <span class="string">"error"</span> );</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<p><code>withCredentials: true</code> is used to mark <code>XMLHttpRequest</code> to aware of HTTP cookies (e.g. session id).</p>
 	  
 	</div>
 
@@ -143,14 +162,14 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2017/08/08/Hexo-Notes/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2017/08/02/Git-Notes/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/2017/08/17/Oracle-VM-resize-root-disk/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -180,7 +199,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2017-08-04 
+	2017-09-18 
 	</div>
 	
 
@@ -191,7 +210,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/Web-server/">Web server<span>1</span></a></li>
+    <li><a href="/categories/Virtualization/">Virtualization<span>1</span></a></li>
   </li>
 
     </ul>
@@ -204,13 +223,18 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Apache/">Apache<span>2</span></a></li> <li><a href="/tags/CORS/">CORS<span>1</span></a></li> <li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
+  <li><a href="/tags/Vagrant/">Vagrant<span>1</span></a></li> <li><a href="/tags/Virtual-Box/">Virtual Box<span>1</span></a></li>
     </ul>
 	</div>
 	
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Vagrant-virtual-box-vm-with-host-based-network"><span class="toc-article-text">Vagrant + virtual box vm with host-based network</span></a></li></ol>
+		</div>
 	
 	</div>
 	

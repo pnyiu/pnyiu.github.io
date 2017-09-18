@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Oracle VM - resize root disk | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  <meta name="description" content="Check current virtual disk[root@localhost ~]# fdisk -l /dev/xvdaDisk /dev/xvda: 21.5 GB, 21474836480 bytes, 41943040 sectorsUnits = sectors of 1 * 512 = 512 bytesSector size (logical/physical): 512 bytes / 512 bytesI/O size (minimum/optimal): 512 bytes / 512 bytesDisk label type: dosDisk identifier: 0x000b3dc8    Device Boot      Start         End      Blocks   Id  System/dev/xvda1   *        2048     1026047      512000   83  Linux/dev/xvda2         1026048    41943039    20458496   8e  Linux LVM">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Oracle VM - resize root disk"/>
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Oracle VM - resize root disk</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <ol>
+<li>Check current virtual disk<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># fdisk -l /dev/xvda</span></div><div class="line"></div><div class="line">Disk /dev/xvda: 21.5 GB, 21474836480 bytes, 41943040 sectors</div><div class="line">Units = sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 512 bytes</div><div class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</div><div class="line">Disk label <span class="built_in">type</span>: dos</div><div class="line">Disk identifier: 0x000b3dc8</div><div class="line"></div><div class="line">    Device Boot      Start         End      Blocks   Id  System</div><div class="line">/dev/xvda1   *        2048     1026047      512000   83  Linux</div><div class="line">/dev/xvda2         1026048    41943039    20458496   8e  Linux LVM</div></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li>Edit virtual disk in Oracle VM Manager, e.g. adjust the size from 20G to 80G<img src="/images/2017-08-17 14_29_11-Oracle VM Home.png"></li>
+<li>Reboot the VM<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># fdisk -l /dev/xvda</span></div><div class="line"></div><div class="line">Disk /dev/xvda: 85.9 GB, 85899345920 bytes, 167772160 sectors</div><div class="line">Units = sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 512 bytes</div><div class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</div><div class="line">Disk label <span class="built_in">type</span>: dos</div><div class="line">Disk identifier: 0x000b3dc8</div><div class="line"></div><div class="line">    Device Boot      Start         End      Blocks   Id  System</div><div class="line">/dev/xvda1   *        2048     1026047      512000   83  Linux</div><div class="line">/dev/xvda2         1026048    41943039    20458496   8e  Linux LVM</div></pre></td></tr></table></figure>
+The Disk size has been changed from 21.5 GB to 85.9 GB</li>
+<li>Delete and recreate the LVM partition (<strong>the data will be remain unchanged</strong>)<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@hktasu168 ~]<span class="comment"># fdisk /dev/xvda</span></div><div class="line">Welcome to fdisk (util-linux 2.23.2).</div><div class="line"></div><div class="line">Changes will remain <span class="keyword">in</span> memory only, until you decide to write them.</div><div class="line">Be careful before using the write <span class="built_in">command</span>.</div><div class="line"></div><div class="line"></div><div class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): m</div><div class="line">Command action</div><div class="line">   a   toggle a bootable flag</div><div class="line">   b   edit bsd disklabel</div><div class="line">   c   toggle the dos compatibility flag</div><div class="line">   d   delete a partition</div><div class="line">   g   create a new empty GPT partition table</div><div class="line">   G   create an IRIX (SGI) partition table</div><div class="line">   l   list known partition types</div><div class="line">   m   <span class="built_in">print</span> this menu</div><div class="line">   n   add a new partition</div><div class="line">   o   create a new empty DOS partition table</div><div class="line">   p   <span class="built_in">print</span> the partition table</div><div class="line">   q   quit without saving changes</div><div class="line">   s   create a new empty Sun disklabel</div><div class="line">   t   change a partition<span class="string">'s system id</span></div><div class="line"><span class="string">   u   change display/entry units</span></div><div class="line"><span class="string">   v   verify the partition table</span></div><div class="line"><span class="string">   w   write table to disk and exit</span></div><div class="line"><span class="string">   x   extra functionality (experts only)</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Command (m for help): p</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Disk /dev/xvda: 85.9 GB, 85899345920 bytes, 167772160 sectors</span></div><div class="line"><span class="string">Units = sectors of 1 * 512 = 512 bytes</span></div><div class="line"><span class="string">Sector size (logical/physical): 512 bytes / 512 bytes</span></div><div class="line"><span class="string">I/O size (minimum/optimal): 512 bytes / 512 bytes</span></div><div class="line"><span class="string">Disk label type: dos</span></div><div class="line"><span class="string">Disk identifier: 0x000b3dc8</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Device Boot      Start         End      Blocks   Id  System</span></div><div class="line"><span class="string">/dev/xvda1   *        2048     1026047      512000   83  Linux</span></div><div class="line"><span class="string">/dev/xvda2         1026048    41943039    20458496   8e  Linux LVM</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Command (m for help): d</span></div><div class="line"><span class="string">Partition number (1,2, default 2): 2</span></div><div class="line"><span class="string">Partition 2 is deleted</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Command (m for help): n</span></div><div class="line"><span class="string">Partition type:</span></div><div class="line"><span class="string">   p   primary (1 primary, 0 extended, 3 free)</span></div><div class="line"><span class="string">   e   extended</span></div><div class="line"><span class="string">Select (default p): p</span></div><div class="line"><span class="string">Partition number (2-4, default 2): 2</span></div><div class="line"><span class="string">First sector (1026048-167772159, default 1026048):</span></div><div class="line"><span class="string">Using default value 1026048</span></div><div class="line"><span class="string">Last sector, +sectors or +size&#123;K,M,G&#125; (1026048-167772159, default 167772159):</span></div><div class="line"><span class="string">Using default value 167772159</span></div><div class="line"><span class="string">Partition 2 of type Linux and of size 79.5 GiB is set</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Command (m for help): p</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Disk /dev/xvda: 85.9 GB, 85899345920 bytes, 167772160 sectors</span></div><div class="line"><span class="string">Units = sectors of 1 * 512 = 512 bytes</span></div><div class="line"><span class="string">Sector size (logical/physical): 512 bytes / 512 bytes</span></div><div class="line"><span class="string">I/O size (minimum/optimal): 512 bytes / 512 bytes</span></div><div class="line"><span class="string">Disk label type: dos</span></div><div class="line"><span class="string">Disk identifier: 0x000b3dc8</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Device Boot      Start         End      Blocks   Id  System</span></div><div class="line"><span class="string">/dev/xvda1   *        2048     1026047      512000   83  Linux</span></div><div class="line"><span class="string">/dev/xvda2         1026048   167772159    83373056   83  Linux</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Command (m for help): t</span></div><div class="line"><span class="string">Partition number (1,2, default 2): 2</span></div><div class="line"><span class="string">Hex code (type L to list all codes): L</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string"> 0  Empty           24  NEC DOS         81  Minix / old Lin bf  Solaris</span></div><div class="line"><span class="string"> 1  FAT12           27  Hidden NTFS Win 82  Linux swap / So c1  DRDOS/sec (FAT-</span></div><div class="line"><span class="string"> 2  XENIX root      39  Plan 9          83  Linux           c4  DRDOS/sec (FAT-</span></div><div class="line"><span class="string"> 3  XENIX usr       3c  PartitionMagic  84  OS/2 hidden C:  c6  DRDOS/sec (FAT-</span></div><div class="line"><span class="string"> 4  FAT16 &lt;32M      40  Venix 80286     85  Linux extended  c7  Syrinx</span></div><div class="line"><span class="string"> 5  Extended        41  PPC PReP Boot   86  NTFS volume set da  Non-FS data</span></div><div class="line"><span class="string"> 6  FAT16           42  SFS             87  NTFS volume set db  CP/M / CTOS / .</span></div><div class="line"><span class="string"> 7  HPFS/NTFS/exFAT 4d  QNX4.x          88  Linux plaintext de  Dell Utility</span></div><div class="line"><span class="string"> 8  AIX             4e  QNX4.x 2nd part 8e  Linux LVM       df  BootIt</span></div><div class="line"><span class="string"> 9  AIX bootable    4f  QNX4.x 3rd part 93  Amoeba          e1  DOS access</span></div><div class="line"><span class="string"> a  OS/2 Boot Manag 50  OnTrack DM      94  Amoeba BBT      e3  DOS R/O</span></div><div class="line"><span class="string"> b  W95 FAT32       51  OnTrack DM6 Aux 9f  BSD/OS          e4  SpeedStor</span></div><div class="line"><span class="string"> c  W95 FAT32 (LBA) 52  CP/M            a0  IBM Thinkpad hi eb  BeOS fs</span></div><div class="line"><span class="string"> e  W95 FAT16 (LBA) 53  OnTrack DM6 Aux a5  FreeBSD         ee  GPT</span></div><div class="line"><span class="string"> f  W95 Ext'</span>d (LBA) 54  OnTrackDM6      a6  OpenBSD         ef  EFI (FAT-12/16/</div><div class="line">10  OPUS            55  EZ-Drive        a7  NeXTSTEP        f0  Linux/PA-RISC b</div><div class="line">11  Hidden FAT12    56  Golden Bow      a8  Darwin UFS      f1  SpeedStor</div><div class="line">12  Compaq diagnost 5c  Priam Edisk     a9  NetBSD          f4  SpeedStor</div><div class="line">14  Hidden FAT16 &lt;3 61  SpeedStor       ab  Darwin boot     f2  DOS secondary</div><div class="line">16  Hidden FAT16    63  GNU HURD or Sys af  HFS / HFS+      fb  VMware VMFS</div><div class="line">17  Hidden HPFS/NTF 64  Novell Netware  b7  BSDI fs         <span class="built_in">fc</span>  VMware VMKCORE</div><div class="line">18  AST SmartSleep  65  Novell Netware  b8  BSDI swap       fd  Linux raid auto</div><div class="line">1b  Hidden W95 FAT3 70  DiskSecure Mult bb  Boot Wizard hid fe  LANstep</div><div class="line">1c  Hidden W95 FAT3 75  PC/IX           be  Solaris boot    ff  BBT</div><div class="line">1e  Hidden W95 FAT1 80  Old Minix</div><div class="line">Hex code (<span class="built_in">type</span> L to list all codes): 8e</div><div class="line">Changed <span class="built_in">type</span> of partition <span class="string">'Linux'</span> to <span class="string">'Linux LVM'</span></div><div class="line"></div><div class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): w</div><div class="line">The partition table has been altered!</div><div class="line"></div><div class="line">Calling ioctl() to re-read partition table.</div><div class="line"></div><div class="line">WARNING: Re-reading the partition table failed with error 16: Device or resource busy.</div><div class="line">The kernel still uses the old table. The new table will be used at</div><div class="line">the next reboot or after you run partprobe(8) or kpartx(8)</div><div class="line">Syncing disks.</div></pre></td></tr></table></figure></li>
+<li>Reboot the VM</li>
+<li>Resize the physical volume<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment"># pvdisplay</span></div><div class="line">  --- Physical volume ---</div><div class="line">  PV Name               /dev/xvda2</div><div class="line">  VG Name               ol</div><div class="line">  PV Size               19.51 GiB / not usable 2.00 MiB</div><div class="line">  Allocatable           yes (but full)</div><div class="line">  PE Size               4.00 MiB</div><div class="line">  Total PE              4994</div><div class="line">  Free PE               0</div><div class="line">  Allocated PE          4994</div><div class="line">  PV UUID               U3oe3C-7qVe-YuHm-5toc-QfDF-YYWn-6hw6vB</div><div class="line"></div><div class="line">[root@localhost ~]<span class="comment"># pvresize /dev/xvda2</span></div><div class="line">  Physical volume <span class="string">"/dev/xvda2"</span> changed</div><div class="line">  1 physical volume(s) resized / 0 physical volume(s) not resized</div><div class="line">[root@localhost ~]<span class="comment"># pvdisplay</span></div><div class="line">  --- Physical volume ---</div><div class="line">  PV Name               /dev/xvda2</div><div class="line">  VG Name               ol</div><div class="line">  PV Size               79.51 GiB / not usable 2.00 MiB</div><div class="line">  Allocatable           yes</div><div class="line">  PE Size               4.00 MiB</div><div class="line">  Total PE              20354</div><div class="line">  Free PE               15360</div><div class="line">  Allocated PE          4994</div><div class="line">  PV UUID               U3oe3C-7qVe-YuHm-5toc-QfDF-YYWn-6hw6vB</div></pre></td></tr></table></figure></li>
+<li>Resize the root volume<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@hktasu168 ~]<span class="comment"># lvdisplay</span></div><div class="line">  --- Logical volume ---</div><div class="line">  LV Path                /dev/ol/swap</div><div class="line">  LV Name                swap</div><div class="line">  VG Name                ol</div><div class="line">  LV UUID                Zv0fXc-mgql-6XAZ-fq0o-Ek3j-YGwz-nsSsUY</div><div class="line">  LV Write Access        <span class="built_in">read</span>/write</div><div class="line">  LV Creation host, time localhost, 2017-07-06 03:13:47 -0400</div><div class="line">  LV Status              available</div><div class="line">  <span class="comment"># open                 2</span></div><div class="line">  LV Size                2.00 GiB</div><div class="line">  Current LE             512</div><div class="line">  Segments               1</div><div class="line">  Allocation             inherit</div><div class="line">  Read ahead sectors     auto</div><div class="line">  - currently <span class="built_in">set</span> to     256</div><div class="line">  Block device           252:0</div><div class="line"></div><div class="line">  --- Logical volume ---</div><div class="line">  LV Path                /dev/ol/root</div><div class="line">  LV Name                root</div><div class="line">  VG Name                ol</div><div class="line">  LV UUID                1xdvMc-tkPn-CsIM-vxwC-3uv8-fNZx-y0h1mf</div><div class="line">  LV Write Access        <span class="built_in">read</span>/write</div><div class="line">  LV Creation host, time localhost, 2017-07-06 03:13:47 -0400</div><div class="line">  LV Status              available</div><div class="line">  <span class="comment"># open                 1</span></div><div class="line">  LV Size                17.51 GiB</div><div class="line">  Current LE             4482</div><div class="line">  Segments               1</div><div class="line">  Allocation             inherit</div><div class="line">  Read ahead sectors     auto</div><div class="line">  - currently <span class="built_in">set</span> to     256</div><div class="line">  Block device           252:1</div><div class="line"></div><div class="line">[root@hktasu168 ~]<span class="comment"># lvextend -l +100%FREE  /dev/ol/root</span></div><div class="line">  Size of logical volume ol/root changed from 17.51 GiB (4482 extents) to 77.51 GiB (19842 extents).</div><div class="line">  Logical volume ol/root successfully resized.</div><div class="line">[root@hktasu168 ~]<span class="comment"># lvdisplay</span></div><div class="line">  --- Logical volume ---</div><div class="line">  LV Path                /dev/ol/swap</div><div class="line">  LV Name                swap</div><div class="line">  VG Name                ol</div><div class="line">  LV UUID                Zv0fXc-mgql-6XAZ-fq0o-Ek3j-YGwz-nsSsUY</div><div class="line">  LV Write Access        <span class="built_in">read</span>/write</div><div class="line">  LV Creation host, time localhost, 2017-07-06 03:13:47 -0400</div><div class="line">  LV Status              available</div><div class="line">  <span class="comment"># open                 2</span></div><div class="line">  LV Size                2.00 GiB</div><div class="line">  Current LE             512</div><div class="line">  Segments               1</div><div class="line">  Allocation             inherit</div><div class="line">  Read ahead sectors     auto</div><div class="line">  - currently <span class="built_in">set</span> to     256</div><div class="line">  Block device           252:0</div><div class="line"></div><div class="line">  --- Logical volume ---</div><div class="line">  LV Path                /dev/ol/root</div><div class="line">  LV Name                root</div><div class="line">  VG Name                ol</div><div class="line">  LV UUID                1xdvMc-tkPn-CsIM-vxwC-3uv8-fNZx-y0h1mf</div><div class="line">  LV Write Access        <span class="built_in">read</span>/write</div><div class="line">  LV Creation host, time localhost, 2017-07-06 03:13:47 -0400</div><div class="line">  LV Status              available</div><div class="line">  <span class="comment"># open                 1</span></div><div class="line">  LV Size                77.51 GiB</div><div class="line">  Current LE             19842</div><div class="line">  Segments               1</div><div class="line">  Allocation             inherit</div><div class="line">  Read ahead sectors     auto</div><div class="line">  - currently <span class="built_in">set</span> to     256</div><div class="line">  Block device           252:1</div></pre></td></tr></table></figure></li>
+<li>Resize the file system<br>[root@hktasu168 ~]# resize2fs /dev/mapper/ol-root<br>resize2fs 1.42.9 (28-Dec-2013)<br>resize2fs: Bad magic number in super-block while trying to open /dev/mapper/ol-root<br>Couldn’t find valid filesystem superblock.</li>
+<li>As Oracle Linux 7 is using <code>xfs</code> as default file system, so we need to install xfsprogs to resize the file system <code>yum install xfsprogs</code>. Then:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@hktasu168 ~]<span class="comment"># xfs_growfs /dev/mapper/ol-root</span></div><div class="line">meta-data=/dev/mapper/ol-root    isize=256    agcount=4, agsize=1147392 blks</div><div class="line">         =                       sectsz=512   attr=2, projid32bit=1</div><div class="line">         =                       crc=0        finobt=0 spinodes=0</div><div class="line">data     =                       bsize=4096   blocks=4589568, imaxpct=25</div><div class="line">         =                       sunit=0      swidth=0 blks</div><div class="line">naming   =version 2              bsize=4096   ascii-ci=0 ftype=0</div><div class="line"><span class="built_in">log</span>      =internal               bsize=4096   blocks=2560, version=2</div><div class="line">         =                       sectsz=512   sunit=0 blks, lazy-count=1</div><div class="line">realtime =none                   extsz=4096   blocks=0, rtextents=0</div><div class="line">data blocks changed from 4589568 to 20318208</div><div class="line">[root@hktasu168 ~]<span class="comment"># df -h</span></div><div class="line">Filesystem           Size  Used Avail Use% Mounted on</div><div class="line">/dev/mapper/ol-root   78G  7.8G   70G  10% /</div><div class="line">devtmpfs             3.8G     0  3.8G   0% /dev</div><div class="line">tmpfs                3.8G     0  3.8G   0% /dev/shm</div><div class="line">tmpfs                3.8G  8.7M  3.8G   1% /run</div><div class="line">tmpfs                3.8G     0  3.8G   0% /sys/fs/cgroup</div><div class="line">/dev/xvda1           497M  142M  356M  29% /boot</div><div class="line">tmpfs                773M     0  773M   0% /run/user/0</div></pre></td></tr></table></figure>
+</li>
+</ol>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2017/09/18/Vagrant-virtual-box/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2017/08/14/Linux-bashrc/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-08-17 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li> <li><a href="/tags/Linux/">Linux<span>1</span></a></li>
+    </ul>
+	</div>
+	
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2017 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>

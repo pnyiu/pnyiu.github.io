@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo | Calvin&#39;s Home</title>
+  <title>Vagrant | Calvin&#39;s Home</title>
   <meta name="author" content="Calvin Yiu">
   
   
@@ -103,7 +103,7 @@
 
 <!-- title -->
 <div class="page-header page-header-inverse ">
-  <h1 class="archive-title-tag title title-inverse ">Hexo</h1>
+  <h1 class="archive-title-tag title title-inverse ">Vagrant</h1>
 </div>
 
 <div class="row page">
@@ -122,8 +122,8 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
-			<div class="date"> 2017-08-08 </div>
-			<div class="article-title"><a href="/2017/08/08/Hexo-Notes/" >Hexo Notes</a></div>						
+			<div class="date"> 2017-09-18 </div>
+			<div class="article-title"><a href="/2017/09/18/Vagrant-virtual-box/" >Vagrant - virtual box</a></div>						
 		</h3>
 	
 
@@ -132,11 +132,24 @@
   <div class="row">
 	
 	
-		<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># Install Node.js</span></div><div class="line">sudo apt-get install nodejs</div><div class="line"></div><div class="line"><span class="comment"># Install node package manager (npm)</span></div><div class="line">sudo apt-get install npm</div><div class="line"></div><div class="line"><span class="comment"># Install git </span></div><div class="line">sudo apt-get install git <span class="comment"># yum install git-core </span></div><div class="line"></div><div class="line"><span class="comment"># Install hexo</span></div><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<h3 id="Hexo-site-folder-and-install-theme"><a href="#Hexo-site-folder-and-install-theme" class="headerlink" title="Hexo site folder and install theme"></a>Hexo site folder and install theme</h3><p>In this blog, I will install <a href="https://hexo.io/themes/" target="_blank" rel="external">freemind</a>:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo init blog <span class="comment">#blog is the folder to contains all hexo related files</span></div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/wzpan/hexo-theme-freemind.git themes/freemind</div></pre></td></tr></table></figure><br>
+		<h2 id="Vagrant-virtual-box-vm-with-host-based-network"><a href="#Vagrant-virtual-box-vm-with-host-based-network" class="headerlink" title="Vagrant + virtual box vm with host-based network"></a>Vagrant + virtual box vm with host-based network</h2><ul>
+<li>The vm can access internet</li>
+<li>The host can access the services running on the vm (e.g. httpd) </li>
+</ul>
+<p>Follow below steps to configure a <a href="https://www.virtualbox.org/manual/ch06.html#network_hostonly" target="_blank" rel="external">host-only network</a> vm and provision by vagrant:</p>
+<ol>
+<li><p>Create a host-only network on Oracle VM VirtualBox Manager<br>File -&gt; Preferences -&gt; Network -&gt; Host-only Networks</p>
+  <img src="/images/2017-09-18 12_20_58-Virtual Box Manager - Host-only network 1.png"> 
+  <img src="/images/2017-09-18 12_20_58-Virtual Box Manager - Host-only network 2.png"> 
+<p>By default, it will auto assign all required values for IPv4 Address, network mask. If DHCP server option is enabled, it will auto assign the required values.</p>
+</li>
+<li>VirtualBox creates a new virtual interface on the host:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">root@localhost:~$ ifconfig vboxnet1</div><div class="line">vboxnet1  Link encap:Ethernet  HWaddr 0a:00:27:00:00:01</div><div class="line">          inet addr:172.28.128.1  Bcast:172.28.128.255  Mask:255.255.255.0</div><div class="line">          inet6 addr: fe80::800:27ff:fe00:1/64 Scope:Link</div><div class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</div><div class="line">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</div><div class="line">          TX packets:96 errors:0 dropped:0 overruns:0 carrier:0</div><div class="line">          collisions:0 txqueuelen:1000</div><div class="line">          RX bytes:0 (0.0 B)  TX bytes:21440 (21.4 KB)</div></pre></td></tr></table></figure> </li>
+<li>Last (but not least ^_^), edit your <a href="https://www.vagrantup.com/docs/vagrantfile/" target="_blank" rel="external">Vagrantfile</a>:<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">config.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> <span class="params">|vb|</span></div><div class="line">  config.vm.network <span class="string">"private_network"</span>, <span class="symbol">:type</span> =&gt; <span class="string">'dhcp'</span>, <span class="symbol">:name</span> =&gt; <span class="string">'vboxnet1'</span>, <span class="symbol">:adapter</span> =&gt; <span class="number">2</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure> 
+</li>
+</ol>
 	
 	</div>
-  <a type="button" href="/2017/08/08/Hexo-Notes/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2017/09/18/Vagrant-virtual-box/#more" class="btn btn-default more">Read More</a>
 </div>
 
 	       
@@ -183,21 +196,21 @@
 		
 			<li><a href="/tags/Git/">Git<span>1</span></a></li>
 		
-			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
-		
-			<li><a href="/tags/Vagrant/">Vagrant<span>1</span></a></li>
-		
-			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
-		
 			<li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li>
 		
 			<li><a href="/tags/Linux/">Linux<span>1</span></a></li>
 		
-			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
-		
-			<li><a href="/tags/Apache/">Apache<span>2</span></a></li>
+			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
 		
 			<li><a href="/tags/Virtual-Box/">Virtual Box<span>1</span></a></li>
+		
+			<li><a href="/tags/Vagrant/">Vagrant<span>1</span></a></li>
+		
+			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
+		
+			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
+		
+			<li><a href="/tags/Apache/">Apache<span>2</span></a></li>
 		
 		 
 		</ul>
