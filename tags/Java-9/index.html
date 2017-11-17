@@ -140,46 +140,6 @@
 <li>Tomcat 8.5.23 (from Apache)</li>
 </ol>
 <img src="https://docs.google.com/drawings/d/e/2PACX-1vThkThZmj6osmG63EaDdR5xFk9EIr7ANB_3guIcti8WuqS5P-_aGvJIdVbChIQkoiZYmU15evgAe60q/pub?w=910&amp;h=606">
-<h3 id="Install-Docker-on-Red-Hat-Enterprise-Linux-7"><a href="#Install-Docker-on-Red-Hat-Enterprise-Linux-7" class="headerlink" title="Install Docker on Red Hat Enterprise Linux 7"></a>Install Docker on Red Hat Enterprise Linux 7</h3><ol>
-<li>Join Red Hat Enterprise Linux developer subscription</li>
-<li>Then, refer to the <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html-single/getting_started_with_containers/" target="_blank" rel="external">GETTING STARTED WITH CONTAINERS</a> to install Docker and corresponding configurations.</li>
-</ol>
-<h3 id="Dockerfile-Apache-HTTPD"><a href="#Dockerfile-Apache-HTTPD" class="headerlink" title="Dockerfile -Apache HTTPD"></a>Dockerfile -Apache HTTPD</h3><ol>
-<li>mkdir -p /root/httpd-project</li>
-<li>cd /root/httpd-project</li>
-<li>vi Dockerfile<figure class="highlight bash"><figcaption><span>Dockerfile for Apache HTTPD</span><a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="external">Dockerfile</a></figcaption><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># My cool Docker image</span></div><div class="line"><span class="comment"># Version 1</span></div><div class="line"></div><div class="line"><span class="comment"># If you loaded redhat-rhel-server-7.0-x86_64 to your local registry, uncomment this FROM line instead:</span></div><div class="line"><span class="comment"># FROM registry.access.redhat.com/rhel</span></div><div class="line"><span class="comment"># Pull the rhel image from the local registry</span></div><div class="line">FROM registry.access.redhat.com/rhel</div><div class="line"></div><div class="line">MAINTAINER Calvin Yiu</div><div class="line">USER root</div><div class="line"></div><div class="line"><span class="comment"># Update image</span></div><div class="line">RUN yum repolist --disablerepo=* &amp;&amp; \</div><div class="line">    yum-config-manager --<span class="built_in">disable</span> \* &gt; /dev/null &amp;&amp; \</div><div class="line">    yum-config-manager --<span class="built_in">enable</span> rhel-7-server-rpms &gt; /dev/null</div><div class="line">RUN yum update -y</div><div class="line"><span class="comment"># Add httpd package. procps and iproute are only added to investigate the image later.</span></div><div class="line">RUN yum install httpd procps iproute -y</div><div class="line">RUN <span class="built_in">echo</span> hostname.abc.com &gt; /etc/hostname</div><div class="line"><span class="comment">#RUN mkdir /run/httpd</span></div><div class="line">COPY httpd-proxy.conf /etc/httpd/conf.modules.d/</div><div class="line"></div><div class="line"><span class="comment"># Create an index.html file</span></div><div class="line"><span class="comment">#RUN bash -c 'echo "Your Web server test is successful." &gt;&gt; /var/www/html/index.html'</span></div><div class="line"></div><div class="line">EXPOSE 80</div><div class="line"></div><div class="line"><span class="comment"># Start the service</span></div><div class="line">CMD /usr/sbin/httpd -D FOREGROUND</div></pre></td></tr></table></figure> </li>
-<li>vi httpd-proxy.conf<figure class="highlight bash"><figcaption><span>httpd-proxy.conf</span></figcaption><table><tr><td class="code"><pre><div class="line">&lt;Proxy <span class="string">"balancer://cluster"</span>&gt;</div><div class="line">    BalancerMember <span class="string">"ajp:/tomcat:8009"</span> loadfactor=1</div><div class="line">    BalancerMember <span class="string">"ajp://tomcat2:8009"</span> loadfactor=2</div><div class="line">    ProxySet lbmethod=bytraffic</div><div class="line">&lt;/Proxy&gt;</div><div class="line"></div><div class="line">ProxyPassMatch ^/(.*\.jsp)$ balancer://cluster/<span class="variable">$1</span></div></pre></td></tr></table></figure> 
-</li>
-</ol>
-<h3 id="Dockerfile-Tomcat"><a href="#Dockerfile-Tomcat" class="headerlink" title="Dockerfile - Tomcat"></a>Dockerfile - Tomcat</h3><ol>
-<li>mkdir -p /root/tomcat-project</li>
-<li>Download binary files from <a href="https://tomcat.apache.org/download-80.cgi" target="_blank" rel="external">Apache</a></li>
-<li>Download Java 8 rpm file from <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">Oracle</a></li>
-<li>Copy above files into /root/tomcat-project</li>
-<li>vi Dockerfile<figure class="highlight bash"><figcaption><span>Dockerfile for Tomcat</span><a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="external">Dockerfile</a></figcaption><table><tr><td class="code"><pre><div class="line"><span class="comment"># My cool Docker image</span></div><div class="line"><span class="comment"># Version 1</span></div><div class="line"></div><div class="line"><span class="comment"># If you loaded redhat-rhel-server-7.0-x86_64 to your local registry, uncomment this FROM line instead:</span></div><div class="line"><span class="comment"># FROM registry.access.redhat.com/rhel</span></div><div class="line"><span class="comment"># Pull the rhel image from the local registry</span></div><div class="line"><span class="comment">#FROM registry.access.redhat.com/rhel</span></div><div class="line">FROM rhel</div><div class="line"></div><div class="line">MAINTAINER Calvin Yiu</div><div class="line"></div><div class="line"><span class="comment"># The USER instruction sets the user name (or UID) and optionally the user group (or GID) to use when running the image and for any RUN, CMD and ENTRYPOINT instructions that follow it in the Dockerfile.</span></div><div class="line">USER root</div><div class="line"></div><div class="line">ENV CATALINA_HOME /usr/<span class="built_in">local</span>/tomcat</div><div class="line">ENV PATH <span class="variable">$CATALINA_HOME</span>/bin:<span class="variable">$PATH</span></div><div class="line"></div><div class="line">RUN mkdir -p <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span></div><div class="line"></div><div class="line"><span class="comment"># Update image</span></div><div class="line">COPY jdk-9.0.1_linux-x64_bin.rpm .</div><div class="line">COPY apache-tomcat-8.5.23.tar.gz .</div><div class="line"></div><div class="line">RUN rpm -ivh jdk-9.0.1_linux-x64_bin.rpm</div><div class="line">RUN tar xvf apache-tomcat-8.5.23.tar.gz -C <span class="variable">$&#123;CATALINA_HOME&#125;</span> --strip-components=1</div><div class="line"></div><div class="line">EXPOSE 8009</div><div class="line"></div><div class="line">WORKDIR <span class="variable">$&#123;CATALINA_HOME&#125;</span></div><div class="line"></div><div class="line">CMD [<span class="string">"catalina.sh"</span>, <span class="string">"run"</span>]</div><div class="line"></div></pre></td></tr></table></figure> 
-</li>
-</ol>
-<h2 id="Build-Apache-HTTPD-and-Tomcat-container-images"><a href="#Build-Apache-HTTPD-and-Tomcat-container-images" class="headerlink" title="Build Apache HTTPD and Tomcat container images"></a>Build Apache HTTPD and Tomcat container images</h2><ol>
-<li>cd /root/httpd-project</li>
-<li>docker build -t rhel_httpd .</li>
-<li>cd /root/tomcat-project</li>
-<li>docker build -t rhel_tomcat .</li>
-<li>docker images<br>[root@workflow tomcat-project]# docker images<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">rhel_httpd                                 latest              101b0144da85        5 hours ago         523 MB</div><div class="line">rhel_tomcat                                latest              8d73b26c2609        29 hours ago        1.135 GB</div><div class="line">registry.access.redhat.com/rhel7/rhel      latest              db7a70a0414e        5 weeks ago         195.9 MB</div><div class="line">registry.access.redhat.com/rhel            latest              db7a70a0414e        5 weeks ago         195.9 MB</div></pre></td></tr></table></figure> 
-</li>
-</ol>
-<h2 id="Create-local-network-for-the-containers"><a href="#Create-local-network-for-the-containers" class="headerlink" title="Create local network for the containers"></a>Create local network for the containers</h2><p>It is recommended to use user-defined bridge networks to control which containers can communicate with each other, and also to enable automatic DNS resolution of container names to IP addresses. <a href="https://docs.docker.com/engine/userguide/networking/" target="_blank" rel="external">User-defined networks</a></p>
-<ol>
-<li><code>docker network create --driver bridge my_bridge_network</code></li>
-<li>docker network list<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">NETWORK ID          NAME                 DRIVER              SCOPE</div><div class="line">f1f1b26c48dd        bridge               bridge              <span class="built_in">local</span></div><div class="line">4f7f8e164833        host                 host                <span class="built_in">local</span></div><div class="line">8aad24fc4399        my_bridge_network    bridge              <span class="built_in">local</span></div><div class="line">f8361e507611        none                 null                <span class="built_in">local</span></div></pre></td></tr></table></figure> 
-</li>
-</ol>
-<h2 id="Start-the-Tomcat-and-HTTP-containers"><a href="#Start-the-Tomcat-and-HTTP-containers" class="headerlink" title="Start the Tomcat and HTTP containers"></a>Start the Tomcat and HTTP containers</h2><ol>
-<li><p><code>bash docker run -i -d -t -v /data/uat/webapps:/usr/local/tomcat/webapps --network=my_bridge_network -p 8080:8080 --name=tomcat --add-host=m-docker.abc.com:10.1.10.182 \--add-host=webdb12cuat:10.1.96.142  rhel_tomcat</code></p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Definition of the options:	   </div><div class="line">  --tty , -t		Allocate a pseudo-TTY</div><div class="line">  --detach , -d		Run container <span class="keyword">in</span> background and <span class="built_in">print</span> container ID</div><div class="line">  --interactive , -i		Keep STDIN open even <span class="keyword">if</span> not attached</div><div class="line">  --volume , -v		Bind mount a volume</div><div class="line">  --add-host		Add a custom host-to-IP mapping (host:ip) (add to /etc/hosts)</div><div class="line">  --network		Connect a container to a network</div><div class="line">  --publish , -p		Publish a container’s port(s) to the host</div><div class="line">  --name		Assign a name to the container</div><div class="line">  </div></pre></td></tr></table></figure> </li>
-<li><code>docker run -i -d -t -v /data/uat/webapps:/usr/local/tomcat/webapps --network=my_bridge_network -p 8081:8080 --name=tomcat2 --add-host=m-docker.abc.com:10.1.10.182 --add-host=webdb12cuat:10.1.96.142  rhel_tomcat</code></li>
-<li>Check the running containers now:<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@workflow tomcat-project]<span class="comment"># docker ps</span></div><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                              NAMES</div><div class="line">9a7fc047032c        rhel_tomcat         <span class="string">"catalina.sh run"</span>        5 hours ago         Up 5 hours          8009/tcp, 0.0.0.0:8081-&gt;8080/tcp   tomcat2</div><div class="line">188eefc95caa        rhel_httpd          <span class="string">"/bin/sh -c '/usr/sbi"</span>   5 hours ago         Up 5 hours          0.0.0.0:80-&gt;80/tcp                 httpd</div><div class="line">ef8553297fcb        rhel_tomcat         <span class="string">"catalina.sh run"</span>        6 hours ago         Up 6 hours          8009/tcp, 0.0.0.0:8080-&gt;8080/tcp   tomcat</div></pre></td></tr></table></figure> </li>
-</ol>
-
 	
 	</div>
   <a type="button" href="/2017/11/17/Docker-on-RHEL-7-4-Apache-HTTPD-and-Tomcat/#more" class="btn btn-default more">Read More</a>
@@ -227,31 +187,31 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Apache/">Apache<span>3</span></a></li>
+			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
 		
 			<li><a href="/tags/Java-9/">Java 9<span>1</span></a></li>
 		
-			<li><a href="/tags/Tomcat/">Tomcat<span>1</span></a></li>
-		
-			<li><a href="/tags/Vagrant/">Vagrant<span>1</span></a></li>
-		
 			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
-		
-			<li><a href="/tags/Git/">Git<span>1</span></a></li>
-		
-			<li><a href="/tags/Red-Hat/">Red Hat<span>1</span></a></li>
-		
-			<li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li>
 		
 			<li><a href="/tags/Docker/">Docker<span>1</span></a></li>
 		
-			<li><a href="/tags/Virtual-Box/">Virtual Box<span>1</span></a></li>
-		
 			<li><a href="/tags/Linux/">Linux<span>1</span></a></li>
+		
+			<li><a href="/tags/Tomcat/">Tomcat<span>1</span></a></li>
+		
+			<li><a href="/tags/Red-Hat/">Red Hat<span>1</span></a></li>
 		
 			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
 		
-			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
+			<li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li>
+		
+			<li><a href="/tags/Vagrant/">Vagrant<span>1</span></a></li>
+		
+			<li><a href="/tags/Apache/">Apache<span>3</span></a></li>
+		
+			<li><a href="/tags/Virtual-Box/">Virtual Box<span>1</span></a></li>
+		
+			<li><a href="/tags/Git/">Git<span>1</span></a></li>
 		
 		 
 		</ul>
