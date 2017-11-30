@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Access subnet behind DD-WRT | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  <meta name="description" content="Below diagram illustrates the network design and layout of my testing environment:
+
+In office, I have two LAN ports and the IPs are assigned by the DHCP server. Therefore, I cannot assign static IPs to the servers. I decided to use the retired router to setup a subnet, so that I can allocate static IP address to the server attached to the router.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Access subnet behind DD-WRT"/>
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Access subnet behind DD-WRT</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>Below diagram illustrates the network design and layout of my testing environment:</p>
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vQShbC3aNfgaeplwXNkBcBUku__hYVatDZv523TV4NiKXF2gBB6zYCpCvWtX1Iz084yKHkREZseepQ0/pub?w=809&h=559">
+<p>In office, I have two LAN ports and the IPs are assigned by the DHCP server. Therefore, I cannot assign static IPs to the servers. I decided to use the retired router to setup a subnet, so that I can allocate static IP address to the server attached to the router.</p>
+<a id="more"></a>
+<h2 id="PC-Win-10"><a href="#PC-Win-10" class="headerlink" title="PC (Win 10)"></a>PC (Win 10)</h2><p>Add the route to the subnet (192.168.1.1/24)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">C:\Users\calviny&gt;route add 192.168.1.0 mask 255.255.255.0 10.1.12.139</div><div class="line">C:\Users\calviny&gt;route <span class="built_in">print</span> -4</div><div class="line">IPv4 Route Table</div><div class="line">===========================================================================</div><div class="line">Active Routes:</div><div class="line">Network Destination        Netmask          Gateway       Interface  Metric</div><div class="line">          0.0.0.0          0.0.0.0        10.1.12.1      10.1.12.139     25</div><div class="line">        10.1.12.0    255.255.255.0         On-link       10.1.12.139    281</div><div class="line">      10.1.12.139  255.255.255.255         On-link       10.1.12.139    281</div><div class="line">      10.1.12.255  255.255.255.255         On-link       10.1.12.139    281</div><div class="line">        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331</div><div class="line">        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331</div><div class="line">  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331</div><div class="line">      192.168.1.0    255.255.255.0      10.1.12.135      10.1.12.139     26</div><div class="line">        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331</div><div class="line">        224.0.0.0        240.0.0.0         On-link       10.1.12.139    281</div><div class="line">  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331</div><div class="line">  255.255.255.255  255.255.255.255         On-link       10.1.12.139    281</div></pre></td></tr></table></figure> 
+<h2 id="DD-WRT-router"><a href="#DD-WRT-router" class="headerlink" title="DD-WRT router"></a>DD-WRT router</h2><ol>
+<li>Change the Operating Mode to Router (Setup -&gt; Advanced Routing)<img src="/images/2017-11-30 - DD (build 21061) - Routing.png"></li>
+<li>Add a new firewall rule to allow the traffic to be forwarded according (Administration -&gt; Commands)<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -I FORWARD -j ACCEPT</div></pre></td></tr></table></figure>
+<img src="/images/2017-11-30 -DD (build 21061) - Diagnostics.png">
+</li>
+</ol>
+<h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">C:\Users\calviny&gt;ping 192.168.1.192</div><div class="line"></div><div class="line">Pinging 192.168.1.192 with 32 bytes of data:</div><div class="line">Reply from 192.168.1.192: bytes=32 time=1ms TTL=63</div><div class="line">Reply from 192.168.1.192: bytes=32 time=1ms TTL=63</div><div class="line">Reply from 192.168.1.192: bytes=32 time&lt;1ms TTL=63</div><div class="line">Reply from 192.168.1.192: bytes=32 time=1ms TTL=63</div><div class="line"></div><div class="line">Ping statistics <span class="keyword">for</span> 192.168.1.192:</div><div class="line">    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),</div><div class="line">Approximate round trip <span class="built_in">times</span> <span class="keyword">in</span> milli-seconds:</div><div class="line">    Minimum = 0ms, Maximum = 1ms, Average = 0ms</div><div class="line"> </div></pre></td></tr></table></figure>
+<p>It is done. I can access the subnet behind DD-WRT router now.</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2017/11/17/Docker-on-RHEL-7-4-Apache-HTTPD-and-Tomcat/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-11-30 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Network/">Network<span>1</span></a></li>
+    </ul>
+	</div>
+	
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2017 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>
