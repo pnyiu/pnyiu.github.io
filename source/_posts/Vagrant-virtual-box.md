@@ -8,8 +8,11 @@ tags:
 categories: Virtualization
 ---
 ## Vagrant + virtual box vm with host-based network
-- The vm can access internet
-- The host can access the services running on the vm (e.g. httpd) 
+With the host-only networking on Virtual Box:
+- the virtual machines can talk to each other (under same network e.g. vboxnet1) and the host
+- the virtual machines can access internet (as Vagrant will create NAT on first network interface, so we will setup host-only network on second interface)
+
+<!-- more -->
 
 Follow below steps to configure a [host-only network](https://www.virtualbox.org/manual/ch06.html#network_hostonly) vm and provision by vagrant:
 1. Create a host-only network on Oracle VM VirtualBox Manager
@@ -36,6 +39,11 @@ vboxnet1  Link encap:Ethernet  HWaddr 0a:00:27:00:00:01
     config.vm.network "private_network", :type => 'dhcp', :name => 'vboxnet1', :adapter => 2
   end
 {% endcodeblock %} 
+4. Use `vagrant up` command to bring up the virtual machine, then you will see below network configuration is created:
+{% img "/images/2017-09-18 14_40_51- Virtual Box Manager - VM Network 1.png"  %} 
+{% img "/images/2017-09-18 14_40_51- Virtual Box Manager - VM Network 2.png"  %} 
+5. Overview of different networking in Virtual Box (from [VirtualBox.org](https://www.virtualbox.org/manual/ch06.html#network_hostonly))
+{% img "/images/2017-09-18 14_36_36-Virtual networking.png"  %}
 
-<!-- more -->
+
 

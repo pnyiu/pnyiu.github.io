@@ -165,7 +165,6 @@ c2(no)->op2->e
 {% codeblock line_number:false %}
 <!-- more -->
 {% endcodeblock %}
-
 ### Front-matter
 {% codeblock lang:yml line_number:false %}
 toc: true # Default: off
@@ -176,3 +175,18 @@ categories:
 - Cat1
 - Cat2
 {% endcodeblock %}
+### Commonly used commands
+{% codeblock line_number:false lang:bash %}
+# Start hexo server
+# hexo server
+
+# Generate a new page
+hexo new "title"
+
+# Generate static files
+hexo generate
+
+# Deploy to github
+hexo deploy
+
+{% endcodeblock %} 
