@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>AWS | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+<!-- title -->
+<div class="page-header page-header-inverse ">
+  <h1 class="archive-title-tag title title-inverse ">AWS</h1>
+</div>
+
+<div class="row page">
+  <!-- cols -->
+  
+  <div class="col-md-9">
+	
+
+	  <div id="top_search"></div>
+
+      
+         <!-- display as entry -->
+	     <div class="mypage">
+	       
+		     
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-04-26 </div>
+			<div class="article-title"><a href="/2019/04/26/Use-CI-CD-on-AWS/" >Use CI/CD on AWS</a></div>						
+		</h3>
+	
+
+
+		     <div class="entry">
+  <div class="row">
+	
+	
+		<p>In this article, I will try to use the administrator account to setup all necessary components for another IAM user to do all CodeCommit and CodeBuild related tasks. Finally, the IAM user is able to maintain CodeBuild projects with minimal permissions. </p>
+<img src="/images/AWSCICD.png">
+<p>Create below S3 buckets:</p>
+<ul>
+<li>codebuild-artifact-bucket</li>
+<li>codebuild-logs-bucket (if you will copy the build logs for S3)</li>
+</ul>
+<p>Create service role for CodeBuild project(s) e.g. <strong>CodeBuildServiceRole</strong>:</p>
+<ol>
+<li>Use below JSON as inline policy<figure class="highlight json"><figcaption><span>Inline policy</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"Version"</span>: <span class="string">"2012-10-17"</span>,</div><div class="line">    <span class="attr">"Statement"</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</div><div class="line">            <span class="attr">"Resource"</span>: [</div><div class="line">                <span class="string">"arn:aws:logs:&lt;REGION&gt;:&lt;AWS-ACCOUNT-ID&gt;:*"</span></div><div class="line">            ],</div><div class="line">            <span class="attr">"Action"</span>: [</div><div class="line">                <span class="string">"logs:CreateLogGroup"</span>,</div><div class="line">                <span class="string">"logs:CreateLogStream"</span>,</div><div class="line">                <span class="string">"logs:PutLogEvents"</span></div><div class="line">            ]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</div><div class="line">            <span class="attr">"Resource"</span>: [</div><div class="line">                <span class="string">"arn:aws:s3:::codebuild-artifact-bucket"</span>,</div><div class="line">                <span class="string">"arn:aws:s3:::codebuild-artifact-bucket/*"</span>,</div><div class="line">                <span class="string">"arn:aws:s3:::codebuild-logs-bucket"</span>,</div><div class="line">                <span class="string">"arn:aws:s3:::codebuild-logs-bucket/*"</span></div><div class="line">            ],</div><div class="line">            <span class="attr">"Action"</span>: [</div><div class="line">                <span class="string">"s3:PutObject"</span>,</div><div class="line">                <span class="string">"s3:GetBucketAcl"</span>,</div><div class="line">                <span class="string">"s3:GetBucketLocation"</span></div><div class="line">            ]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</div><div class="line">            <span class="attr">"Action"</span>: [</div><div class="line">                <span class="string">"codecommit:*"</span></div><div class="line">            ],</div><div class="line">            <span class="attr">"Resource"</span>: <span class="string">"*"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li>Set trusted entities to “AWS service: codebuild”</li>
+</ol>
+<p>Create an IAM user to maintain CodeCommit and CodeBuild:</p>
+<ol>
+<li>Add <strong>AWSCodeBuildAdminAccess</strong>, <strong>AWSCodeCommitFullAccess</strong> to the user</li>
+<li>Add permission to pass the <strong>CodeBuildServiceRole</strong> to CodeBuild service, you may use below inline policy:<figure class="highlight json"><figcaption><span>Inline policy</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"Version"</span>: <span class="string">"2012-10-17"</span>,</div><div class="line">    <span class="attr">"Statement"</span>: [</div><div class="line">        &#123;            </div><div class="line">            <span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</div><div class="line">            <span class="attr">"Action"</span>: [</div><div class="line">                <span class="string">"iam:GetRole"</span>,</div><div class="line">                <span class="string">"iam:PassRole"</span></div><div class="line">            ],</div><div class="line">            <span class="attr">"Resource"</span>: [                </div><div class="line">                <span class="string">"arn:aws:iam::&lt;ACCOUNT-ID&gt;:role/CodeBuildServiceRole"</span></div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li>Assign <strong>Console password</strong> to allow the IAM user to use AWS Console</li>
+<li>Create HTTPS Git credentials for AWS CodeCommit</li>
+</ol>
+<p>Create CodeCommit repository:</p>
+<ul>
+<li>Login with the new IAM user</li>
+<li>Choose Developer Tools &gt; CodeCommit &gt; Repositories</li>
+<li>Click <code>Create repository</code></li>
+<li>Enter the repository name and description - optional</li>
+<li>Click <code>Create</code> to create the repository</li>
+</ul>
+<p>Create CodeBuild project:</p>
+<ul>
+<li>Login with the new IAM user</li>
+<li>Choose Developer Tools &gt; CodeBuild &gt; Build projects</li>
+<li>Click <code>Create build project</code></li>
+<li>Enter project name, e.g. codebuild-project1</li>
+<li>Select <strong>AWS CodeCommit</strong> as source provider</li>
+<li>Choose the repository from the drop down</li>
+<li>Environment: <ul>
+<li>Environment image: Managed image</li>
+<li>Operating system: Ubuntu</li>
+<li>Service role: Existing service role</li>
+<li>Role name: <strong>CodeBuildServiceRole</strong></li>
+<li>Allow AWS CodeBuild to modify this service role so it can be used with this build project: Uncheck</li>
+</ul>
+</li>
+<li>Buildspec:<ul>
+<li>Build specifications: Use a buildspec file </li>
+</ul>
+</li>
+<li>Artifacts:<ul>
+<li>Type: Amazon S3</li>
+<li>Bucket name: <strong>codebuild-artifact-bucket</strong></li>
+</ul>
+</li>
+<li>Logs (optional):<ul>
+<li>CloudWatch:<ul>
+<li>CloudWatch logs - optional: Check</li>
+<li>Group name: blank</li>
+<li>Stream name: blank</li>
+</ul>
+</li>
+<li>S3:<ul>
+<li>S3 logs - optional: Check</li>
+<li>Bucket: codebuild-logs-bucket</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click <code>Create build project</code> to create the project    </li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2019/04/26/Use-CI-CD-on-AWS/#more" class="btn btn-default more">Read More</a>
+</div>
+
+	       
+	     </div>
+	     <div>
+	       <center>
+	         <div class="pagination">
+<ul class="pagination">
+	 
+</ul>
+</div>
+
+	       </center>
+	     </div>	
+      
+
+</div> <!-- col-md-9/col-md-12 -->
+
+
+<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+	<div class="widget">
+		<h4>Categories</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/AWS/">AWS<span>1</span></a></li>
+		
+			<li><a href="/categories/Hexo/">Hexo<span>1</span></a></li>
+		
+			<li><a href="/categories/SCM/">SCM<span>1</span></a></li>
+		
+			<li><a href="/categories/Virtualization/">Virtualization<span>1</span></a></li>
+		
+			<li><a href="/categories/Web-server/">Web server<span>1</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>Tag Cloud</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/Test/">Test<span>0</span></a></li>
+		
+			<li><a href="/tags/Docker/">Docker<span>1</span></a></li>
+		
+			<li><a href="/tags/CodeBuild/">CodeBuild<span>1</span></a></li>
+		
+			<li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li>
+		
+			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
+		
+			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
+		
+			<li><a href="/tags/Tomcat/">Tomcat<span>1</span></a></li>
+		
+			<li><a href="/tags/Vagrant/">Vagrant<span>1</span></a></li>
+		
+			<li><a href="/tags/Java-9/">Java 9<span>1</span></a></li>
+		
+			<li><a href="/tags/Red-Hat/">Red Hat<span>1</span></a></li>
+		
+			<li><a href="/tags/Git/">Git<span>1</span></a></li>
+		
+			<li><a href="/tags/CodeCommit/">CodeCommit<span>1</span></a></li>
+		
+			<li><a href="/tags/AWS/">AWS<span>1</span></a></li>
+		
+			<li><a href="/tags/Virtual-Box/">Virtual Box<span>1</span></a></li>
+		
+			<li><a href="/tags/Apache/">Apache<span>3</span></a></li>
+		
+			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
+		
+			<li><a href="/tags/Network/">Network<span>1</span></a></li>
+		
+			<li><a href="/tags/WDMyCloud/">WDMyCloud<span>0</span></a></li>
+		
+			<li><a href="/tags/Linux/">Linux<span>1</span></a></li>
+		
+			<li><a href="/tags/IAM/">IAM<span>1</span></a></li>
+		
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>Recent Posts</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2019/04/26/Use-CI-CD-on-AWS/" ><i class="fa fa-file-o"></i>Use CI/CD on AWS</a>
+      </li>
+    
+      <li>
+        <a href="/2017/11/30/Access-subnet-behind-DD-WRT/" ><i class="fa fa-file-o"></i>Access subnet behind DD-WRT</a>
+      </li>
+    
+      <li>
+        <a href="/2017/11/17/Docker-on-RHEL-7-4-Apache-HTTPD-and-Tomcat/" ><i class="fa fa-file-o"></i>Docker on RHEL 7.4 (Apache ...</a>
+      </li>
+    
+      <li>
+        <a href="/2017/09/18/Vagrant-virtual-box/" ><i class="fa fa-file-o"></i>Vagrant - virtual box</a>
+      </li>
+    
+      <li>
+        <a href="/2017/08/17/Oracle-VM-resize-root-disk/" ><i class="fa fa-file-o"></i>Oracle VM - resize root disk</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/pnyiu" title="My Github account." target="_blank"]);">My Github</a></li>
+	
+		<li><i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/in/pnyiu/" title="My Linkin account." target="_blank"]);">My LinkedIn</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>

@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pnyiu.github.io/2019/04/26/Use-CI-CD-on-AWS/</loc>
+    
+    <lastmod>2019-04-26T08:58:03.769Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2017/08/08/Hexo-Notes/</loc>
+    
+    <lastmod>2019-04-26T07:12:33.256Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://pnyiu.github.io/2017/11/30/Access-subnet-behind-DD-WRT/</loc>
     
     <lastmod>2017-11-30T07:50:34.986Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>https://pnyiu.github.io/2017/11/17/Docker-on-RHEL-7-4-Apache-HTTPD-and-Tomcat/</loc>
     
     <lastmod>2017-11-17T09:28:07.047Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://pnyiu.github.io/2017/08/08/Hexo-Notes/</loc>
-    
-    <lastmod>2017-09-18T06:52:12.758Z</lastmod>
     
   </url>
   

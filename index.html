@@ -138,9 +138,102 @@
 		
             
 		
+            
+		
         
         <!-- render other articles -->
         
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-04-26 </div>
+			<div class="article-title"><a href="/2019/04/26/Use-CI-CD-on-AWS/" >Use CI/CD on AWS</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<p>In this article, I will try to use the administrator account to setup all necessary components for another IAM user to do all CodeCommit and CodeBuild related tasks. Finally, the IAM user is able to maintain CodeBuild projects with minimal permissions. </p>
+<img src="/images/AWSCICD.png">
+<p>Create below S3 buckets:</p>
+<ul>
+<li>codebuild-artifact-bucket</li>
+<li>codebuild-logs-bucket (if you will copy the build logs for S3)</li>
+</ul>
+<p>Create service role for CodeBuild project(s) e.g. <strong>CodeBuildServiceRole</strong>:</p>
+<ol>
+<li>Use below JSON as inline policy<figure class="highlight json"><figcaption><span>Inline policy</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"Version"</span>: <span class="string">"2012-10-17"</span>,</div><div class="line">    <span class="attr">"Statement"</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</div><div class="line">            <span class="attr">"Resource"</span>: [</div><div class="line">                <span class="string">"arn:aws:logs:&lt;REGION&gt;:&lt;AWS-ACCOUNT-ID&gt;:*"</span></div><div class="line">            ],</div><div class="line">            <span class="attr">"Action"</span>: [</div><div class="line">                <span class="string">"logs:CreateLogGroup"</span>,</div><div class="line">                <span class="string">"logs:CreateLogStream"</span>,</div><div class="line">                <span class="string">"logs:PutLogEvents"</span></div><div class="line">            ]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</div><div class="line">            <span class="attr">"Resource"</span>: [</div><div class="line">                <span class="string">"arn:aws:s3:::codebuild-artifact-bucket"</span>,</div><div class="line">                <span class="string">"arn:aws:s3:::codebuild-artifact-bucket/*"</span>,</div><div class="line">                <span class="string">"arn:aws:s3:::codebuild-logs-bucket"</span>,</div><div class="line">                <span class="string">"arn:aws:s3:::codebuild-logs-bucket/*"</span></div><div class="line">            ],</div><div class="line">            <span class="attr">"Action"</span>: [</div><div class="line">                <span class="string">"s3:PutObject"</span>,</div><div class="line">                <span class="string">"s3:GetBucketAcl"</span>,</div><div class="line">                <span class="string">"s3:GetBucketLocation"</span></div><div class="line">            ]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</div><div class="line">            <span class="attr">"Action"</span>: [</div><div class="line">                <span class="string">"codecommit:*"</span></div><div class="line">            ],</div><div class="line">            <span class="attr">"Resource"</span>: <span class="string">"*"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li>Set trusted entities to “AWS service: codebuild”</li>
+</ol>
+<p>Create an IAM user to maintain CodeCommit and CodeBuild:</p>
+<ol>
+<li>Add <strong>AWSCodeBuildAdminAccess</strong>, <strong>AWSCodeCommitFullAccess</strong> to the user</li>
+<li>Add permission to pass the <strong>CodeBuildServiceRole</strong> to CodeBuild service, you may use below inline policy:<figure class="highlight json"><figcaption><span>Inline policy</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"Version"</span>: <span class="string">"2012-10-17"</span>,</div><div class="line">    <span class="attr">"Statement"</span>: [</div><div class="line">        &#123;            </div><div class="line">            <span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</div><div class="line">            <span class="attr">"Action"</span>: [</div><div class="line">                <span class="string">"iam:GetRole"</span>,</div><div class="line">                <span class="string">"iam:PassRole"</span></div><div class="line">            ],</div><div class="line">            <span class="attr">"Resource"</span>: [                </div><div class="line">                <span class="string">"arn:aws:iam::&lt;ACCOUNT-ID&gt;:role/CodeBuildServiceRole"</span></div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li>Assign <strong>Console password</strong> to allow the IAM user to use AWS Console</li>
+<li>Create HTTPS Git credentials for AWS CodeCommit</li>
+</ol>
+<p>Create CodeCommit repository:</p>
+<ul>
+<li>Login with the new IAM user</li>
+<li>Choose Developer Tools &gt; CodeCommit &gt; Repositories</li>
+<li>Click <code>Create repository</code></li>
+<li>Enter the repository name and description - optional</li>
+<li>Click <code>Create</code> to create the repository</li>
+</ul>
+<p>Create CodeBuild project:</p>
+<ul>
+<li>Login with the new IAM user</li>
+<li>Choose Developer Tools &gt; CodeBuild &gt; Build projects</li>
+<li>Click <code>Create build project</code></li>
+<li>Enter project name, e.g. codebuild-project1</li>
+<li>Select <strong>AWS CodeCommit</strong> as source provider</li>
+<li>Choose the repository from the drop down</li>
+<li>Environment: <ul>
+<li>Environment image: Managed image</li>
+<li>Operating system: Ubuntu</li>
+<li>Service role: Existing service role</li>
+<li>Role name: <strong>CodeBuildServiceRole</strong></li>
+<li>Allow AWS CodeBuild to modify this service role so it can be used with this build project: Uncheck</li>
+</ul>
+</li>
+<li>Buildspec:<ul>
+<li>Build specifications: Use a buildspec file </li>
+</ul>
+</li>
+<li>Artifacts:<ul>
+<li>Type: Amazon S3</li>
+<li>Bucket name: <strong>codebuild-artifact-bucket</strong></li>
+</ul>
+</li>
+<li>Logs (optional):<ul>
+<li>CloudWatch:<ul>
+<li>CloudWatch logs - optional: Check</li>
+<li>Group name: blank</li>
+<li>Stream name: blank</li>
+</ul>
+</li>
+<li>S3:<ul>
+<li>S3 logs - optional: Check</li>
+<li>Bucket: codebuild-logs-bucket</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click <code>Create build project</code> to create the project    </li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2019/04/26/Use-CI-CD-on-AWS/#more" class="btn btn-default more">Read More</a>
+</div>
+
+           
+		
            
 			  
 	
@@ -416,6 +509,8 @@ Use <code>git submodule add &lt;repo_url&gt;</code> to add submodule as below:<f
 		<h4>Categories</h4>
 		<ul class="tag_box inline list-unstyled">
 		
+			<li><a href="/categories/AWS/">AWS<span>1</span></a></li>
+		
 			<li><a href="/categories/Hexo/">Hexo<span>1</span></a></li>
 		
 			<li><a href="/categories/SCM/">SCM<span>1</span></a></li>
@@ -433,33 +528,45 @@ Use <code>git submodule add &lt;repo_url&gt;</code> to add submodule as below:<f
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
+			<li><a href="/tags/Docker/">Docker<span>1</span></a></li>
+		
+			<li><a href="/tags/Tomcat/">Tomcat<span>1</span></a></li>
+		
 			<li><a href="/tags/Java-9/">Java 9<span>1</span></a></li>
+		
+			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
 		
 			<li><a href="/tags/Vagrant/">Vagrant<span>1</span></a></li>
 		
 			<li><a href="/tags/Apache/">Apache<span>3</span></a></li>
 		
-			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
-		
-			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
-		
 			<li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li>
-		
-			<li><a href="/tags/Tomcat/">Tomcat<span>1</span></a></li>
-		
-			<li><a href="/tags/Git/">Git<span>1</span></a></li>
-		
-			<li><a href="/tags/Docker/">Docker<span>1</span></a></li>
-		
-			<li><a href="/tags/Network/">Network<span>1</span></a></li>
-		
-			<li><a href="/tags/Linux/">Linux<span>1</span></a></li>
 		
 			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
 		
+			<li><a href="/tags/Test/">Test<span>0</span></a></li>
+		
+			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
+		
+			<li><a href="/tags/Linux/">Linux<span>1</span></a></li>
+		
+			<li><a href="/tags/CodeBuild/">CodeBuild<span>1</span></a></li>
+		
+			<li><a href="/tags/IAM/">IAM<span>1</span></a></li>
+		
 			<li><a href="/tags/Red-Hat/">Red Hat<span>1</span></a></li>
 		
+			<li><a href="/tags/CodeCommit/">CodeCommit<span>1</span></a></li>
+		
+			<li><a href="/tags/WDMyCloud/">WDMyCloud<span>0</span></a></li>
+		
 			<li><a href="/tags/Virtual-Box/">Virtual Box<span>1</span></a></li>
+		
+			<li><a href="/tags/AWS/">AWS<span>1</span></a></li>
+		
+			<li><a href="/tags/Git/">Git<span>1</span></a></li>
+		
+			<li><a href="/tags/Network/">Network<span>1</span></a></li>
 		
 		 
 		</ul>
@@ -471,6 +578,10 @@ Use <code>git submodule add &lt;repo_url&gt;</code> to add submodule as below:<f
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2019/04/26/Use-CI-CD-on-AWS/" ><i class="fa fa-file-o"></i>Use CI/CD on AWS</a>
+      </li>
     
       <li>
         <a href="/2017/11/30/Access-subnet-behind-DD-WRT/" ><i class="fa fa-file-o"></i>Access subnet behind DD-WRT</a>
@@ -486,10 +597,6 @@ Use <code>git submodule add &lt;repo_url&gt;</code> to add submodule as below:<f
     
       <li>
         <a href="/2017/08/17/Oracle-VM-resize-root-disk/" ><i class="fa fa-file-o"></i>Oracle VM - resize root disk</a>
-      </li>
-    
-      <li>
-        <a href="/2017/08/14/Linux-bashrc/" ><i class="fa fa-file-o"></i>Linux - .bashrc</a>
       </li>
     
   </ul>
@@ -522,7 +629,7 @@ Use <code>git submodule add &lt;repo_url&gt;</code> to add submodule as below:<f
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2017 Calvin Yiu
+  &copy; 2019 Calvin Yiu
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
