@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Docker on RHEL 7.4 (Apache HTTPD and Tomcat) | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  <meta name="description" content="Environment
+Red Hat Enterprise Linux 7.4 VM on Oracle VM Server
+Docker 1.12.6  (from Red Hat yum repository)
+Oracle JDK SE 9 (from Oracle)
+Apache HTTPD 2.4.6 (from Red Hat yum repository)
+Tomcat 8.5.23 (from Apache)">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Docker on RHEL 7.4 (Apache HTTPD and Tomcat)"/>
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/spacelab.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar  navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header ">		
+			<h1 class="title "> Docker on RHEL 7.4 (Apache HTTPD and Tomcat)</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><ol>
+<li>Red Hat Enterprise Linux 7.4 VM on Oracle VM Server</li>
+<li>Docker 1.12.6  (from Red Hat yum repository)</li>
+<li>Oracle JDK SE 9 (from Oracle)</li>
+<li>Apache HTTPD 2.4.6 (from Red Hat yum repository)</li>
+<li>Tomcat 8.5.23 (from Apache)</li>
+</ol>
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vThkThZmj6osmG63EaDdR5xFk9EIr7ANB_3guIcti8WuqS5P-_aGvJIdVbChIQkoiZYmU15evgAe60q/pub?w=910&amp;h=606" class="">
+
+<span id="more"></span>
+
+<h3 id="Install-Docker-on-Red-Hat-Enterprise-Linux-7"><a href="#Install-Docker-on-Red-Hat-Enterprise-Linux-7" class="headerlink" title="Install Docker on Red Hat Enterprise Linux 7"></a>Install Docker on Red Hat Enterprise Linux 7</h3><ol>
+<li>Join Red Hat Enterprise Linux developer subscription</li>
+<li>Then, refer to the <a target="_blank" rel="noopener" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html-single/getting_started_with_containers/">GETTING STARTED WITH CONTAINERS</a> to install Docker and corresponding configurations.</li>
+</ol>
+<h3 id="Dockerfile-Apache-HTTPD"><a href="#Dockerfile-Apache-HTTPD" class="headerlink" title="Dockerfile -Apache HTTPD"></a>Dockerfile -Apache HTTPD</h3><ol>
+<li>mkdir -p /root/httpd-project</li>
+<li>cd /root/httpd-project</li>
+<li>vi Dockerfile<pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><div class="caption"><span>Dockerfile for Apache HTTPD</span><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a></div><code class="language-bash">
+# My cool Docker image
+# Version 1
+
+# If you loaded redhat-rhel-server-7.0-x86_64 to your local registry, uncomment this FROM line instead:
+# FROM registry.access.redhat.com&#x2F;rhel
+# Pull the rhel image from the local registry
+FROM registry.access.redhat.com&#x2F;rhel
+
+MAINTAINER Calvin Yiu
+USER root
+
+# Update image
+RUN yum repolist --disablerepo&#x3D;* &amp;&amp; \
+    yum-config-manager --disable \* &gt; &#x2F;dev&#x2F;null &amp;&amp; \
+    yum-config-manager --enable rhel-7-server-rpms &gt; &#x2F;dev&#x2F;null
+RUN yum update -y
+# Add httpd package. procps and iproute are only added to investigate the image later.
+RUN yum install httpd procps iproute -y
+RUN echo hostname.abc.com &gt; &#x2F;etc&#x2F;hostname
+#RUN mkdir &#x2F;run&#x2F;httpd
+COPY httpd-proxy.conf &#x2F;etc&#x2F;httpd&#x2F;conf.modules.d&#x2F;
+
+# Create an index.html file
+#RUN bash -c &#39;echo &quot;Your Web server test is successful.&quot; &gt;&gt; &#x2F;var&#x2F;www&#x2F;html&#x2F;index.html&#39;
+
+EXPOSE 80
+
+# Start the service
+CMD &#x2F;usr&#x2F;sbin&#x2F;httpd -D FOREGROUND</code></pre> </li>
+<li>vi httpd-proxy.conf<pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><div class="caption"><span>httpd-proxy.conf</span></div><code class="language-bash">&lt;Proxy &quot;balancer:&#x2F;&#x2F;cluster&quot;&gt;
+    BalancerMember &quot;ajp:&#x2F;tomcat:8009&quot; loadfactor&#x3D;1
+    BalancerMember &quot;ajp:&#x2F;&#x2F;tomcat2:8009&quot; loadfactor&#x3D;2
+    ProxySet lbmethod&#x3D;bytraffic
+&lt;&#x2F;Proxy&gt;
+
+ProxyPassMatch ^&#x2F;(.*\.jsp)$ balancer:&#x2F;&#x2F;cluster&#x2F;$1</code></pre> </li>
+</ol>
+<h3 id="Dockerfile-Tomcat"><a href="#Dockerfile-Tomcat" class="headerlink" title="Dockerfile - Tomcat"></a>Dockerfile - Tomcat</h3><ol>
+<li>mkdir -p /root/tomcat-project</li>
+<li>Download binary files from <a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-80.cgi">Apache</a></li>
+<li>Download Java 8 rpm file from <a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Oracle</a></li>
+<li>Copy above files into /root/tomcat-project</li>
+<li>vi Dockerfile<pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><div class="caption"><span>Dockerfile for Tomcat</span><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a></div><code class="language-bash"># My cool Docker image
+# Version 1
+
+# If you loaded redhat-rhel-server-7.0-x86_64 to your local registry, uncomment this FROM line instead:
+# FROM registry.access.redhat.com&#x2F;rhel
+# Pull the rhel image from the local registry
+#FROM registry.access.redhat.com&#x2F;rhel
+FROM rhel
+
+MAINTAINER Calvin Yiu
+
+# The USER instruction sets the user name (or UID) and optionally the user group (or GID) to use when running the image and for any RUN, CMD and ENTRYPOINT instructions that follow it in the Dockerfile.
+USER root
+
+ENV CATALINA_HOME &#x2F;usr&#x2F;local&#x2F;tomcat
+ENV PATH $CATALINA_HOME&#x2F;bin:$PATH
+
+RUN mkdir -p &quot;$CATALINA_HOME&quot;
+
+# Update image
+COPY jdk-9.0.1_linux-x64_bin.rpm .
+COPY apache-tomcat-8.5.23.tar.gz .
+
+RUN rpm -ivh jdk-9.0.1_linux-x64_bin.rpm
+RUN tar xvf apache-tomcat-8.5.23.tar.gz -C $&#123;CATALINA_HOME&#125; --strip-components&#x3D;1
+
+EXPOSE 8009
+
+WORKDIR $&#123;CATALINA_HOME&#125;
+
+CMD [&quot;catalina.sh&quot;, &quot;run&quot;]
+</code></pre> </li>
+</ol>
+<h2 id="Build-Apache-HTTPD-and-Tomcat-container-images"><a href="#Build-Apache-HTTPD-and-Tomcat-container-images" class="headerlink" title="Build Apache HTTPD and Tomcat container images"></a>Build Apache HTTPD and Tomcat container images</h2><ol>
+<li>cd /root/httpd-project</li>
+<li>docker build -t rhel_httpd .</li>
+<li>cd /root/tomcat-project</li>
+<li>docker build -t rhel_tomcat .</li>
+<li>docker images<br>[root@workflow tomcat-project]# docker images<pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><code class="language-bash">REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
+rhel_httpd                                 latest              101b0144da85        5 hours ago         523 MB
+rhel_tomcat                                latest              8d73b26c2609        29 hours ago        1.135 GB
+registry.access.redhat.com&#x2F;rhel7&#x2F;rhel      latest              db7a70a0414e        5 weeks ago         195.9 MB
+registry.access.redhat.com&#x2F;rhel            latest              db7a70a0414e        5 weeks ago         195.9 MB</code></pre> </li>
+</ol>
+<h2 id="Create-local-network-for-the-containers"><a href="#Create-local-network-for-the-containers" class="headerlink" title="Create local network for the containers"></a>Create local network for the containers</h2><p>It is recommended to use user-defined bridge networks to control which containers can communicate with each other, and also to enable automatic DNS resolution of container names to IP addresses. <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/userguide/networking/">User-defined networks</a></p>
+<ol>
+<li><code>docker network create --driver bridge my_bridge_network</code></li>
+<li>docker network list<pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><code class="language-bash">NETWORK ID          NAME                 DRIVER              SCOPE
+f1f1b26c48dd        bridge               bridge              local
+4f7f8e164833        host                 host                local
+8aad24fc4399        my_bridge_network    bridge              local
+f8361e507611        none                 null                local</code></pre> </li>
+</ol>
+<h2 id="Start-the-Tomcat-and-HTTP-containers"><a href="#Start-the-Tomcat-and-HTTP-containers" class="headerlink" title="Start the Tomcat and HTTP containers"></a>Start the Tomcat and HTTP containers</h2><ol>
+<li><code>bash docker run -i -d -t -v /data/uat/webapps:/usr/local/tomcat/webapps --network=my_bridge_network -p 8080:8080 --name=tomcat --add-host=m-docker.abc.com:10.1.10.182 \--add-host=webdb12cuat:10.1.96.142  rhel_tomcat</code> <pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><code class="language-bash">Definition of the options:	   
+  --tty , -t		Allocate a pseudo-TTY
+  --detach , -d		Run container in background and print container ID
+  --interactive , -i		Keep STDIN open even if not attached
+  --volume , -v		Bind mount a volume
+  --add-host		Add a custom host-to-IP mapping (host:ip) (add to &#x2F;etc&#x2F;hosts)
+  --network		Connect a container to a network
+  --publish , -p		Publish a container’s port(s) to the host
+  --name		Assign a name to the container
+  </code></pre> </li>
+<li><code>docker run -i -d -t -v /data/uat/webapps:/usr/local/tomcat/webapps --network=my_bridge_network -p 8081:8080 --name=tomcat2 --add-host=m-docker.abc.com:10.1.10.182 --add-host=webdb12cuat:10.1.96.142  rhel_tomcat</code></li>
+<li>Check the running containers now:<pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><code class="language-bash">[root@workflow tomcat-project]# docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                              NAMES
+9a7fc047032c        rhel_tomcat         &quot;catalina.sh run&quot;        5 hours ago         Up 5 hours          8009&#x2F;tcp, 0.0.0.0:8081-&gt;8080&#x2F;tcp   tomcat2
+188eefc95caa        rhel_httpd          &quot;&#x2F;bin&#x2F;sh -c &#39;&#x2F;usr&#x2F;sbi&quot;   5 hours ago         Up 5 hours          0.0.0.0:80-&gt;80&#x2F;tcp                 httpd
+ef8553297fcb        rhel_tomcat         &quot;catalina.sh run&quot;        6 hours ago         Up 6 hours          8009&#x2F;tcp, 0.0.0.0:8080-&gt;8080&#x2F;tcp   tomcat</code></pre> </li>
+</ol>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2017/11/30/Access-subnet-behind-DD-WRT/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2017/08/17/Oracle-VM-resize-root-disk/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-11-17 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Apache/">Apache<span>3</span></a></li> <li><a href="/tags/Tomcat/">Tomcat<span>1</span></a></li> <li><a href="/tags/Red-Hat/">Red Hat<span>1</span></a></li> <li><a href="/tags/Java-9/">Java 9<span>1</span></a></li> <li><a href="/tags/Docker/">Docker<span>1</span></a></li>
+    </ul>
+	</div>
+	
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p>
+
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>

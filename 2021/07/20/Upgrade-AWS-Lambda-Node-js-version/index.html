@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Upgrade AWS Lambda Node.js version | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  <meta name="description" content="AWS has announced the end of support for Node.js 10.x. Hence, I have to upgrade our existing Node.js 10.x Lambda functions to 14.x.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Upgrade AWS Lambda Node.js version"/>
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/spacelab.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar  navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header ">		
+			<h1 class="title "> Upgrade AWS Lambda Node.js version</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>AWS has announced the <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html">end of support</a> for Node.js 10.x. Hence, I have to upgrade our existing Node.js 10.x Lambda functions to 14.x. </p>
+<img src="/images/2021-07-21%2015_11_10-Runtime%20support%20policy%20-%20AWS%20Lambda.png" class="">
+
+<span id="more"></span>
+<p>In this post, I will share my changes on CI/CD and SAM scripts:</p>
+<ul>
+<li><p>CodeBuild project <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html">Docker image</a></p>
+<ul>
+<li><span class="label label-danger">old:</span> aws/codebuild/nodejs:10.1.0 <span class="label label-default">identifier</span> </li>
+<li><span class="label label-success">new:</span> aws/codebuild/standard:5.0 <span class="label label-default">identifier</span> 
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">AWSTemplateFormatVersion: 2010-09-09
+Description: My CI&#x2F;CD
+
+Parameters:
+ServiceName:
+    Type: String
+    Default: my-api          
+BuildImageName:
+    Description: Docker image for application build
+    Type: String
+    Default: aws&#x2F;codebuild&#x2F;nodejs:10.1.0
+CodeBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+        Environment:
+            Type: LINUX_CONTAINER
+            ComputeType: BUILD_GENERAL1_SMALL
+            Image: !Sub $&#123;BuildImageName&#125;</code></pre>
+<img src="/images/2021-07-21%2010_35_23-CodeBuild%20-%20AWS%20Developer%20Tools.png" class=""></li>
+</ul>
+</li>
+<li><p>Lambda Node.js <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">runtime version</a></p>
+<ul>
+<li><span class="label label-danger">old:</span> Node.js 10 (nodejs14.x <span class="label label-default">identifier</span> )</li>
+<li><span class="label label-success">new:</span> Node.js 14 (nodejs10.x <span class="label label-default">identifier</span> )
+<pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>SAM template.yaml</span></div><code class="language-yaml">Transform: AWS::Serverless-2016-10-31
+Description: My API SAM template
+
+# More info about Globals: https:&#x2F;&#x2F;github.com&#x2F;awslabs&#x2F;serverless-application-model&#x2F;blob&#x2F;master&#x2F;docs&#x2F;globals.rst
+Globals:
+    Function:
+        Runtime: nodejs14.x
+            </code></pre></li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/oracledb">Node Oracle DB package</a></p>
+<ul>
+<li><span class="label label-danger">old:</span> 3.1.2</li>
+<li><span class="label label-success">new:</span> 5.2.0
+Use node-oracledb 5.2 to connect Node.js 12, or later, to Oracle Database. Older versions of node-oracledb may work with older versions of Node.js.<pre class="line-numbers language-json" data-language="json"><div class="caption"><span>package.json</span></div><code class="language-json">&#123;
+&quot;name&quot;: &quot;accommodation&quot;,
+&quot;version&quot;: &quot;1.0.0&quot;,
+&quot;description&quot;: &quot;&quot;,
+&quot;dependencies&quot;: &#123;
+    &quot;aws-sdk&quot;: &quot;^2.501.0&quot;,
+    &quot;axios&quot;: &quot;^0.21.1&quot;,
+    &quot;oracledb&quot;: &quot;^5.2.0&quot;
+&#125;,
+&quot;devDependencies&quot;: &#123;&#125;,
+&quot;scripts&quot;: &#123;
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+&#125;,
+&quot;author&quot;: &quot;Fairtech&quot;,
+&quot;license&quot;: &quot;ISC&quot;
+&#125;</code></pre></li>
+</ul>
+</li>
+<li><p>CodeBuild buildspec.yaml<br>  Add command to install Node.js 14.17.3</p>
+  <pre class="line-numbers language-yaml" data-language="yaml"><div class="caption"><span>buildspec.yaml</span></div><code class="language-yaml">version: 0.2
+
+phases:
+pre_build:
+    commands:
+    - echo &quot;Installing node&quot;
+    - n 14.17.3    </code></pre></li>
+<li><p>Last, trigger the CI/CD to deploy all Lambda functions:</p>
+  <img src="/images/2021-07-21%2010_38_49-Functions%20-%20Lambda.png" class="">
+<p>  All functions are using Node.js 14.x now.</p>
+</li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2021/07/21/Node-js-notes/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2019/04/29/Akamai-CDN/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2021-07-20 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/AWS/">AWS<span>4</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/AWS/">AWS<span>5</span></a></li> <li><a href="/tags/CodeBuild/">CodeBuild<span>2</span></a></li>
+    </ul>
+	</div>
+	
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p>
+
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>

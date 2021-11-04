@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>AWS API Gateway notes | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  <meta name="description" content="Basice Concepts
+RESTREpresentational State Transfer is a software architectural style.
+RESTfulA web API that obeys the REST constraints is informally described as RESTful:
+A client-server architecture made up of clients, servers, and resources, with requests managed through HTTP
+Access resources via URI and URL-encoded parameters
+Use of JSON or XML to transmit data.
+Stateless client-server communication
+Cacheable
+
+
+
+Wikipedia and Redhat">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="AWS API Gateway notes"/>
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/spacelab.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar  navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header ">		
+			<h1 class="title "> AWS API Gateway notes</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h3 id="Basice-Concepts"><a href="#Basice-Concepts" class="headerlink" title="Basice Concepts"></a>Basice Concepts</h3><blockquote><ul>
+<li><strong>REST</strong><br><strong>RE</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer is a software architectural style.</li>
+<li><strong>RESTful</strong><br>A web API that obeys the REST constraints is informally described as RESTful:<ul>
+<li>A client-server architecture made up of clients, servers, and resources, with requests managed through <strong>HTTP</strong></li>
+<li>Access resources via URI and URL-encoded parameters</li>
+<li>Use of <strong>JSON or XML</strong> to transmit data.</li>
+<li>Stateless client-server communication</li>
+<li>Cacheable</li>
+</ul>
+</li>
+</ul>
+<footer><strong>Wikipedia and Redhat</strong></footer></blockquote>
+
+<span id="more"></span>
+
+<h3 id="History-of-OpenAPI"><a href="#History-of-OpenAPI" class="headerlink" title="History of OpenAPI"></a>History of OpenAPI</h3><blockquote><ul>
+<li>In 2011, <strong>The Swagger API project</strong> was created by Tony Tam</li>
+<li>In 2015, SmartBear Software, the company that maintained <strong>Swagger</strong>, announced that it was helping create a new organization, under the sponsorship of the Linux Foundation, called the <strong>OpenAPI Initiative</strong>. A variety of companies, including Google, IBM, and Microsoft are founding members.</li>
+<li>In 2016, the <strong>Swagger specification</strong> was renamed to <strong>OpenAPI Specification</strong>, and was moved to a new software repository on GitHub</li>
+</ul>
+<footer><strong>Wikipedia</strong><cite><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Swagger_(software)">en.wikipedia.org/wiki/Swagger_(software)</a></cite></footer></blockquote>
+
+<h3 id="API-Gateway"><a href="#API-Gateway" class="headerlink" title="API Gateway"></a>API Gateway</h3><p>API Gateway acts as a “front door” for applications to access data, business logic. With AWS Lambda, API Gateway forms the app-facing part of the AWS serverless infrastructure. Amazon API Gateway supports:</p>
+<ul>
+<li>REST (stateless) <code>Private</code> <code>Public</code></li>
+<li>HTTP (stateless) <code>Public</code></li>
+<li>WebSocket (stateful) <code>Public</code></li>
+</ul>
+<h4 id="API-endpoint"><a href="#API-endpoint" class="headerlink" title="API endpoint"></a>API endpoint</h4><ul>
+<li><p>Edge-optimized API endpoint<br>For geographically distributed clients. API requests are routed to the nearest CloudFront Point of Presence (POP)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@workflow ~]<span class="comment"># ping &lt;api-id&gt;.execute-api.ap-east-1.amazonaws.com</span></span><br><span class="line">PING yigz4xb0al.execute-api.ap-east-1.amazonaws.com (xx.xxx.xxx.xx) 56(84) bytes of data.</span><br><span class="line">64 bytes from server-XX-XXX-XXX-XX.hkg60.r.cloudfront.net (xx.xxx.xxx.xxx): icmp_seq=1 ttl=245 time=2.69 ms</span><br><span class="line">64 bytes from server-XX-XXX-XXX-XX.hkg60.r.cloudfront.net (xx.xxx.xxx.xxx): icmp_seq=2 ttl=245 time=2.59 ms</span><br><span class="line">64 bytes from server-XX-XXX-XXX-XX.hkg60.r.cloudfront.net (xx.xxx.xxx.xxx): icmp_seq=3 ttl=245 time=2.23 ms</span><br><span class="line">64 bytes from server-XX-XXX-XXX-XX.hkg60.r.cloudfront.net (xx.xxx.xxx.xxx): icmp_seq=4 ttl=245 time=2.46 ms</span><br></pre></td></tr></table></figure></li>
+<li><p>Private API endpoint (for REST only)<br>Restricts API access through interface VPC endpoints only</p>
+<ul>
+<li><p>Access your private APIs through VPC endpoint:</p>
+<ol>
+<li><p>Create <strong>VPC endpoint</strong> for API Gateway (execute-api)</p>
+<img src="/images/2021-09-07%2009_22_25-Endpoints%20_%20VPC%20Management%20Console.png" class="">
+<img src="/images/2021-09-07%2011_02_36-Endpoints%20_%20VPC%20Management%20Console.png" class=""></li>
+<li><p>For Security group, select the security group to associate with the VPC endpoint network interfaces.The security group you choose must be set to allow TCP Port 443 inbound HTTPS traffic from either an IP range in your VPC or another security group in your VPC.</p>
+</li>
+<li><p>To grant access to your VPC endpoint, create a resource policy and attach it to your API:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ResourcePolicy:</span><br><span class="line">    CustomStatements:</span><br><span class="line">        - Effect: <span class="string">&#x27;Allow&#x27;</span></span><br><span class="line">            Action: <span class="string">&#x27;execute-api:Invoke&#x27;</span></span><br><span class="line">            Resource: [<span class="string">&#x27;execute-api:/*/*/*&#x27;</span>]</span><br><span class="line">            Principal: <span class="string">&#x27;*&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>An interface endpoint is an elastic network interface with a private IP address from the IP address range of your subnet. It serves as an entry point for traffic destined to a supported AWS service or a VPC endpoint service. Interface endpoints are powered by AWS PrivateLink.</p>
+</li>
+</ol>
+</li>
+<li><p>If you have <strong>private DNS enabled</strong> (Private DNS is enabled by default), you can use private or public DNS names to access your APIs. If you have private DNS disabled, you can only use public DNS names (i.e. via <strong>{vpce-id}</strong> ).</p>
+<ul>
+<li>In VPC<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X GET  \</span><br><span class="line">-H <span class="string">&#x27;x-api-key: xxxxxxxxxxxxxxxxxxx&#x27;</span>  \</span><br><span class="line">-H <span class="string">&quot;Referer:www.xxxx.com&quot;</span>  \</span><br><span class="line"><span class="string">&#x27;https://&#123;rest-api-id&#125;.execute-api.ap-east-1.amazonaws.com/Prod/api-test&#x27;</span></span><br><span class="line"></span><br><span class="line">curl -i -X GET \</span><br><span class="line">-H <span class="string">&quot;Referer:www.xxxx.com&quot;</span> \</span><br><span class="line">-H <span class="string">&#x27;x-api-key: xxxxxxxxxxxxxxxxxxxxxxxx&#x27;</span> \</span><br><span class="line">-H <span class="string">&quot;Host: &#123;rest-api-id&#125;.execute-api.ap-east-1.amazonaws.com&quot;</span> \</span><br><span class="line"><span class="string">&#x27;https://&#123;vpce-id&#125;.execute-api.ap-east-1.amazonaws.com/Prod/api-test&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Controlling access to API Gateway APIs<br>API keys – API keys are alphanumeric string values that you distribute to application developer customers to grant access to your API.<br>Only the AWS::Serverless::Api resource type supports API keys.</p>
+</li>
+</ul>
+</li>
+<li><p>Regional API endpoint<br>A regional API endpoint is intended for clients in the same region.</p>
+</li>
+</ul>
+<h4 id="Summary-of-endpoint-and-accessibilty"><a href="#Summary-of-endpoint-and-accessibilty" class="headerlink" title="Summary of endpoint and accessibilty"></a>Summary of endpoint and accessibilty</h4><table>
+<th>Endpoint type</th>
+<th>In VPC <br/>with ENI with Enable Private DNS Name</th>
+<th>Outside VPC</th>
+<tr>
+<td>Edge</td>
+<td>
+    <ol>
+        <li> Edge-optimized custom domain name to access your public API
+        <li> Custom CloudFront distribution
+    </ol>
+</td>
+<td>
+    <ol>
+        <li> Edge-optimized custom domain name to access your public API
+        <li> Custom CloudFront distribution
+        <li> https://<font color="red">{rest-api-id}</font>.execute-api.{region}.amazonaws.com/{stage}
+    </ol>
+</td>
+</tr>
+<tr>
+<td>Regional</td>
+<td>
+    <ol>
+        <li> Edge-optimized custom domain name to access your public API
+        <li> Custom CloudFront distribution
+    </ol>
+</td>
+<td>
+    <ol>
+        <li> Edge-optimized custom domain name to access your public API
+        <li> Custom CloudFront distribution
+        <li> https://<font color="red">{rest-api-id}</font>.execute-api.{region}.amazonaws.com/{stage}
+    </ol>
+</td>
+</tr>
+<tr>
+<td>Private</td>
+<td>
+    <ol>
+        <li>https://<font color="red">{vpce-id}</font>.execute-api.{region}.amazonaws.com/{stage} <br/>
+            Host: <font color="red">{rest-api-id}</font>.execute-api.{region}.amazonaws.com <br/>
+        <li> https://<font color="red">{rest-api-id}</font>.execute-api.{region}.amazonaws.com/{stage}
+    </ol>
+</td>
+<td>
+None
+</td>
+</tr>
+</table>
+
+<h3 id="Common-Serverless-Resources"><a href="#Common-Serverless-Resources" class="headerlink" title="Common Serverless Resources"></a>Common Serverless Resources</h3><p>AWS::Serverless::Function<br>    <figure class="highlight yaml"><figcaption><span>AWS::Serverless::Function</span><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html">AWS::Serverless::Function</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">Type:</span> <span class="string">AWS::Serverless::Function</span></span><br><span class="line"><span class="attr">Properties:</span></span><br><span class="line">    <span class="attr">ApiEvent:</span></span><br><span class="line">        <span class="attr">Type:</span> <span class="string">Api</span></span><br><span class="line">        <span class="attr">Properties:</span></span><br><span class="line">            <span class="attr">Method:</span> <span class="string">get</span></span><br><span class="line">            <span class="attr">Path:</span> <span class="string">/group/&#123;user&#125;</span></span><br><span class="line">            <span class="attr">RestApiId:</span></span><br><span class="line">                <span class="attr">Ref:</span> <span class="string">MyApi</span></span><br></pre></td></tr></table></figure></p>
+<p>RestApiId</p>
+<ul>
+<li>Identifier of a RestApi resource, which must contain an operation with the given path and method. Typically, this is set to reference an AWS::Serverless::Api resource defined in this template. If you don’t define this property, AWS SAM creates a <strong>default</strong> <strong>AWS::Serverless::Api</strong> resource using a generated OpenApi document. That resource contains a union of all paths and methods defined by Api events in the same template that do not specify a RestApiId</li>
+</ul>
+<p>AWS::Serverless::Api (REST)</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">Type:</span> <span class="string">AWS::Serverless::Api</span></span><br><span class="line"><span class="attr">Properties:</span></span><br><span class="line">  <span class="attr">AccessLogSetting:</span> <span class="string">AccessLogSetting</span></span><br><span class="line">  <span class="attr">Auth:</span> <span class="string">ApiAuth</span></span><br></pre></td></tr></table></figure>
+
+<p>AWS::Serverless::HttpApi</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">Type:</span> <span class="string">AWS::Serverless::HttpApi</span></span><br><span class="line"><span class="attr">Properties:</span></span><br><span class="line">  <span class="attr">AccessLogSettings:</span> <span class="string">AccessLogSettings</span></span><br><span class="line">  <span class="attr">Auth:</span> <span class="string">HttpApiAuth</span></span><br></pre></td></tr></table></figure>
+
+<p>AWS::Serverless::Function</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">Global</span> <span class="string">section</span></span><br><span class="line"><span class="attr">Globals:</span></span><br><span class="line">  <span class="attr">Function:</span></span><br><span class="line">    <span class="attr">Runtime:</span> <span class="string">nodejs12.x</span></span><br><span class="line">    <span class="attr">Timeout:</span> <span class="number">180</span></span><br><span class="line">    <span class="attr">Handler:</span> <span class="string">index.handler</span></span><br><span class="line">    <span class="attr">Environment:</span></span><br><span class="line">      <span class="attr">Variables:</span></span><br><span class="line">        <span class="attr">TABLE_NAME:</span> <span class="string">data-table</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Validating-AWS-SAM-template-files"><a href="#Validating-AWS-SAM-template-files" class="headerlink" title="Validating AWS SAM template files"></a>Validating AWS SAM template files</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">sam</span> <span class="string">validate</span> <span class="string">&lt;path-to-file&gt;/template.yml</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Working-with-layers"><a href="#Working-with-layers" class="headerlink" title="Working with layers"></a>Working with layers</h3><p>When you invoke your function using one of the <code>sam local</code> commands, the layers package of your function is downloaded and cached on your local host.</p>
+<img src="/images/2021-09-06%2012_11_15-Working%20with%20layers%20-%20AWS%20Serverless%20Application%20Model.png" class="">
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2021/08/30/AWS-CI-CD-for-API-gateway/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2021-09-06 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/AWS/">AWS<span>5</span></a></li>
+    </ul>
+	</div>
+	
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p>
+
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>

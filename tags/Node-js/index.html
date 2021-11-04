@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Node.js | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/spacelab.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar  navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+<!-- title -->
+<div class="page-header ">
+  <h1 class="archive-title-tag title ">Node.js</h1>
+</div>
+
+<div class="row page">
+  <!-- cols -->
+  
+  <div class="col-md-9">
+	
+
+	  <div id="top_search"></div>
+
+      
+         <!-- display as entry -->
+	     <div class="mypage">
+	       
+		     
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-07-21 </div>
+			<div class="article-title"><a href="/2021/07/21/Node-js-notes/" >Node.js notes</a></div>						
+		</h3>
+	
+
+
+		     <div class="entry">
+  <div class="row">
+	
+	
+		<p>Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.</p>
+<h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><p>npm is the default package manager for the JavaScript runtime environment Node.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Install package</span><br><span class="line">npm install package-name</span><br><span class="line"></span><br><span class="line"># Check outdated packages</span><br><span class="line">npm outpdated</span><br><span class="line"></span><br><span class="line"># Run arbitrary package scripts in package.json</span><br><span class="line">npm run</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h3><ul>
+<li>nodemon will read the package.json for the main property</li>
+<li>nodemon will also search for the scripts.start property in package.json</li>
+</ul>
+<h3 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h3><h4 id="exports-require"><a href="#exports-require" class="headerlink" title="exports / require"></a>exports / require</h4><p><code>module.exports</code> is used for defining what a module exports and makes available through <code>require()</code><br>(1) The <code>exports</code> variable is available within a module’s file-level scope, and is assigned the value of<br><code>module.exports</code> before the module is evaluated.</p>
+<img src="/images/nodejs-exports.png" class="">
+
+<p>(2) However, be aware that like any variable, if a new value is assigned to exports, it is no longer bound to module.exports</p>
+<h3 id="Manage-Node-js-versions"><a href="#Manage-Node-js-versions" class="headerlink" title="Manage Node.js versions"></a>Manage Node.js versions</h3><table>
+<thead>
+<tr>
+<th></th>
+<th><a target="_blank" rel="noopener" href="https://github.com/tj/n">n</a></th>
+<th><a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">nvm</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Overall</td>
+<td>Node module</td>
+<td>Bash script</td>
+</tr>
+<tr>
+<td>Supported platforms</td>
+<td>macOS, Linux, including with Windows Subsystem for Linux. <strong>n does not work in native shells on Microsoft Windows</strong></td>
+<td>unix, macOS, and windows WSL. For Windows, <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">nvm-windows</a></td>
+</tr>
+<tr>
+<td>Installation</td>
+<td>npm install -g n</td>
+<td>curl -o- <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh">https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh</a> | bash</td>
+</tr>
+<tr>
+<td>Installing Node.js Versions</td>
+<td>n <version></td>
+<td>nvm install node <br/># “node” is an alias for the latest version</td>
+</tr>
+</tbody></table>
+<p>npm install installs dependencies into the node_modules/ directory<br>npm run build does nothing unless you specify what “build” does in your package.json file</p>
+
+	
+	</div>
+  <a type="button" href="/2021/07/21/Node-js-notes/#more" class="btn btn-default more">Read More</a>
+</div>
+
+	       
+	     </div>
+	     <div>
+	       <center>
+	         <div class="pagination">
+<ul class="pagination">
+	 
+</ul>
+</div>
+
+	       </center>
+	     </div>	
+      
+
+</div> <!-- col-md-9/col-md-12 -->
+
+
+<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+	<div class="widget">
+		<h4>Categories</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/AWS/">AWS<span>4</span></a></li>
+		
+			<li><a href="/categories/Hexo/">Hexo<span>1</span></a></li>
+		
+			<li><a href="/categories/Hints/">Hints<span>1</span></a></li>
+		
+			<li><a href="/categories/JavaScript/">JavaScript<span>1</span></a></li>
+		
+			<li><a href="/categories/Hexo/Notes/">Notes<span>1</span></a></li>
+		
+			<li><a href="/categories/JavaScript/Notes/">Notes<span>1</span></a></li>
+		
+			<li><a href="/categories/SCM/">SCM<span>1</span></a></li>
+		
+			<li><a href="/categories/Web-server/">Web server<span>1</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>Tag Cloud</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/Git/">Git<span>1</span></a></li>
+		
+			<li><a href="/tags/Docker/">Docker<span>1</span></a></li>
+		
+			<li><a href="/tags/Linux/">Linux<span>2</span></a></li>
+		
+			<li><a href="/tags/Apache/">Apache<span>3</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
+			<li><a href="/tags/JavaScript/">JavaScript<span>1</span></a></li>
+		
+			<li><a href="/tags/Node-js/">Node.js<span>1</span></a></li>
+		
+			<li><a href="/tags/Red-Hat/">Red Hat<span>1</span></a></li>
+		
+			<li><a href="/tags/AWS/">AWS<span>5</span></a></li>
+		
+			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
+		
+			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
+		
+			<li><a href="/tags/CodeBuild/">CodeBuild<span>2</span></a></li>
+		
+			<li><a href="/tags/XPath/">XPath<span>1</span></a></li>
+		
+			<li><a href="/tags/IAM/">IAM<span>1</span></a></li>
+		
+			<li><a href="/tags/Vi/">Vi<span>1</span></a></li>
+		
+			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
+		
+			<li><a href="/tags/Network/">Network<span>1</span></a></li>
+		
+			<li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li>
+		
+			<li><a href="/tags/Software/">Software<span>1</span></a></li>
+		
+			<li><a href="/tags/Tomcat/">Tomcat<span>1</span></a></li>
+		
+		
+		   <li><a href="/tags">...<span>23</span></a></li>
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>Recent Posts</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2021/09/06/AWS-API-Gateway-notes/" ><i class="fa fa-file-o"></i>AWS API Gateway notes</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/30/AWS-CI-CD-for-API-gateway/" ><i class="fa fa-file-o"></i>AWS CI/CD for API gateway</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/17/Create-AWS-Lamdba-Layer/" ><i class="fa fa-file-o"></i>Create AWS Lamdba Layer</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/12/Useful-software/" ><i class="fa fa-file-o"></i>Useful software</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/11/AEM-Get-referenced-links/" ><i class="fa fa-file-o"></i>AEM - Get incoming links to...</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/pnyiu" title="My Github account." target="_blank"]);">My Github</a></li>
+	
+		<li><i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/in/pnyiu/" title="My Linkin account." target="_blank"]);">My LinkedIn</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p>
+
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>

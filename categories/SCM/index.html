@@ -1,0 +1,408 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SCM | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/spacelab.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar  navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+<!-- title -->
+<div class="page-header ">
+  <h1 class="archive-title-category title ">SCM</h1>
+</div>
+
+<div class="row page">
+  <!-- cols -->
+  
+  <div class="col-md-9">
+	
+
+	  <div id="top_search"></div>
+
+      
+         <!-- display as entry -->
+	     <div class="mypage">
+	       
+		     
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-08-02 </div>
+			<div class="article-title"><a href="/2017/08/02/Git-Notes/" >Git - Notes</a></div>						
+		</h3>
+	
+
+
+		     <div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h2><ul>
+<li>Working Directory</li>
+<li>Staging Area (.git/index)</li>
+<li>.git directory</li>
+</ul>
+<h2 id="Useful-Commands"><a href="#Useful-Commands" class="headerlink" title="Useful Commands"></a>Useful Commands</h2><ul>
+<li><p>Configuration files</p>
+<ul>
+<li><p>Repository config file: .git/config</p>
+</li>
+<li><p>System config file: ~/.gitconfig</p>
+<figure class="highlight bash"><figcaption><span>.git\config</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">        repositoryformatversion = 0</span><br><span class="line">        filemode = <span class="literal">false</span></span><br><span class="line">        bare = <span class="literal">false</span></span><br><span class="line">        logallrefupdates = <span class="literal">true</span></span><br><span class="line">        worktree = C:/git/myrepo</span><br><span class="line">        ignorecase = <span class="literal">true</span></span><br><span class="line">[submodule]</span><br><span class="line">        active = .</span><br><span class="line">[remote <span class="string">&quot;origin&quot;</span>]</span><br><span class="line">        url = https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/myrepo</span><br><span class="line">        fetch = +refs/heads/*:refs/remotes/origin/*</span><br><span class="line">[branch <span class="string">&quot;master&quot;</span>]</span><br><span class="line">        remote = origin</span><br><span class="line">        merge = refs/heads/master</span><br><span class="line">[branch <span class="string">&quot;release/prod&quot;</span>]</span><br><span class="line">        remote = origin</span><br><span class="line">        merge = refs/heads/release/prod</span><br><span class="line">        remote = origin</span><br><span class="line">        merge = refs/heads/release/preprod</span><br><span class="line">[branch <span class="string">&quot;release/test&quot;</span>]</span><br><span class="line">        remote = origin</span><br><span class="line">        merge = refs/heads/release/<span class="built_in">test</span></span><br><span class="line">[branch <span class="string">&quot;release/dev&quot;</span>]</span><br><span class="line">        remote = origin</span><br><span class="line">        merge = refs/heads/release/dev</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>git remote</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">$ git remote show</span><br><span class="line">origin</span><br><span class="line"></span><br><span class="line">$ git remote -v</span><br><span class="line">origin  https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/myrepo (fetch)</span><br><span class="line">origin  https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/myrepo (push)</span><br><span class="line"></span><br><span class="line">$ git remote show origin</span><br><span class="line">* remote origin</span><br><span class="line">Fetch URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/myrepo</span><br><span class="line">Push  URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/myrepo</span><br><span class="line">HEAD branch: master</span><br><span class="line">Remote branches:</span><br><span class="line">    develop         tracked</span><br><span class="line">    feature/<span class="built_in">test</span>    tracked</span><br><span class="line">    master          tracked</span><br><span class="line">    release/dev     tracked</span><br><span class="line">    release/preprod tracked</span><br><span class="line">    release/prod    tracked</span><br><span class="line">    release/<span class="built_in">test</span>    tracked</span><br><span class="line">Local branches configured <span class="keyword">for</span> <span class="string">&#x27;git pull&#x27;</span>:</span><br><span class="line">    master          merges with remote master</span><br><span class="line">    release/dev     merges with remote release/dev</span><br><span class="line">    release/preprod merges with remote release/preprod</span><br><span class="line">    release/prod    merges with remote release/prod</span><br><span class="line">    release/<span class="built_in">test</span>    merges with remote release/<span class="built_in">test</span></span><br><span class="line">Local refs configured <span class="keyword">for</span> <span class="string">&#x27;git push&#x27;</span>:</span><br><span class="line">    master          pushes to master          (up to date)</span><br><span class="line">    release/dev     pushes to release/dev     (up to date)</span><br><span class="line">    release/preprod pushes to release/preprod (up to date)</span><br><span class="line">    release/prod    pushes to release/prod    (up to date)</span><br><span class="line">    release/<span class="built_in">test</span>    pushes to release/<span class="built_in">test</span>    (up to date)</span><br></pre></td></tr></table></figure></li>
+<li><p>git push [repository] [refspec]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch release/preprod</span><br><span class="line"></span><br><span class="line">$ git push</span><br><span class="line">Everything up-to-date</span><br></pre></td></tr></table></figure></li>
+<li><p>git rebase (current branch is topic) </p>
+<pre>
+        A---B---C topic*
+       /
+  D---E---F---G master
+
+  git rebase master
+  git rebase master topic
+
+                A'--B'--C' topic*
+               /
+  D---E---F---G master
+
+</pre>
+
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git <span class="built_in">log</span> --oneline</span><br><span class="line">c60c0d9 (HEAD -&gt; release/dev, origin/release/dev) Upgrade node version</span><br><span class="line">16675e8 Update oracledb version</span><br><span class="line">e5461ba Update oracledb version</span><br><span class="line">4e70188 Change Nodejs version to 14</span><br><span class="line">52cf369 Add GEO IP City Function</span><br><span class="line"></span><br><span class="line">52cf369 -- 4e70188 -- e5461ba -- 16675e8 -- c60c0d9</span><br><span class="line"></span><br><span class="line">Squash 4e70188 -- e5461ba -- 16675e8 -- c60c0d9 into one commit</span><br><span class="line"></span><br><span class="line">$ git rebase -i 52cf369</span><br><span class="line"></span><br><span class="line">pick 4e70188 Change Nodejs version to 14</span><br><span class="line">squash e5461ba Update oracledb version <span class="comment"># meld into previous commit</span></span><br><span class="line">squash 16675e8 Update oracledb version <span class="comment"># meld into previous commit</span></span><br><span class="line">squash c60c0d9 Upgrade node versiong   <span class="comment"># meld into previous commit</span></span><br><span class="line"></span><br><span class="line">52cf369 -- d59392d</span><br><span class="line"></span><br><span class="line">$ git <span class="built_in">log</span> --oneline</span><br><span class="line">d59392d Update Nodejs version to 14 and oracledb version</span><br><span class="line">52cf369 Add GEO IP City Function</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><p>git merge  (current branch is master)</p>
+  <pre>
+  A---B---C topic
+  /
+  D---E---F---G master*
+
+  git merge topic
+
+  A---B---C topic
+  /         \
+  D---E---F---G---H master*
+  </pre>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Merge topic with current branch</span></span><br><span class="line">$ git merge topic</span><br><span class="line">Updating ea2980a..532a0fa</span><br><span class="line">Fast-forward</span><br><span class="line">README.md                       |   2 +-</span><br></pre></td></tr></table></figure></li>
+<li><p>git pull<br><code>git fetch</code> followed by <code>git merge</code> or <code>git rebase</code> (with --rebase)</p>
+<p>FETCH_HEAD is a short-lived ref, to keep track of what has just been fetched from the remote repository</p>
+<pre>
+    A---B---C master on origin
+   /
+  D---E---F---G master*
+  ^
+  origin/master in your repository  
+
+    A---B---C origin/master
+   /         \
+  D---E---F---G---H master
+
+</pre></li>
+<li><p>git fetch<br><code>git fetch --all</code> Fetch all remote branches<br><code>git fetch origin master</code> Fetch only remote master branch</p>
+</li>
+<li><p>git commit<br>Record changes to the repository<br><code>-a</code> Automatically stage modified and deleted files but <strong>new files are not affected</strong> (use <code>git add</code> for new files)</p>
+</li>
+<li><p>git add<br>Add file contents to the staging area(index)</p>
+</li>
+<li><p>git checkout<br>Switch branches or restore working tree files<br><code>git checkout [&lt;branch&gt;]</code><br><code>-b</code> - create a new branch<br><code>-B</code> - create a new branch or reset the branch </p>
+</li>
+<li><p>git show<br>Shows one or more objects (blobs, trees, tags and commits).</p>
+</li>
+<li><p>git log<br><code>--oneline</code>  </p>
+</li>
+<li><p>ancestry references<br><code>^</code>: the parent of that commit<br><code>^2</code>: the second parent of that commit (from the branch that was merged (say, topic))<br><code>~</code>:  first parent<br><code>~2</code>: first parent of first parent (it traverses the first parents the number of times you specify)<br><code>~~</code>: first parent of first parent</p>
+</li>
+</ul>
+	
+	</div>
+  <a type="button" href="/2017/08/02/Git-Notes/#more" class="btn btn-default more">Read More</a>
+</div>
+
+	       
+	     </div>
+	     <div>
+	       <center>
+	         <div class="pagination">
+<ul class="pagination">
+	 
+</ul>
+</div>
+
+	       </center>
+	     </div>	
+      
+
+</div> <!-- col-md-9/col-md-12 -->
+
+
+<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+	<div class="widget">
+		<h4>Categories</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/AWS/">AWS<span>4</span></a></li>
+		
+			<li><a href="/categories/Hexo/">Hexo<span>1</span></a></li>
+		
+			<li><a href="/categories/Hints/">Hints<span>1</span></a></li>
+		
+			<li><a href="/categories/JavaScript/">JavaScript<span>1</span></a></li>
+		
+			<li><a href="/categories/Hexo/Notes/">Notes<span>1</span></a></li>
+		
+			<li><a href="/categories/JavaScript/Notes/">Notes<span>1</span></a></li>
+		
+			<li><a href="/categories/SCM/">SCM<span>1</span></a></li>
+		
+			<li><a href="/categories/Web-server/">Web server<span>1</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>Tag Cloud</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/Software/">Software<span>1</span></a></li>
+		
+			<li><a href="/tags/Network/">Network<span>1</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
+			<li><a href="/tags/Git/">Git<span>1</span></a></li>
+		
+			<li><a href="/tags/Docker/">Docker<span>1</span></a></li>
+		
+			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
+		
+			<li><a href="/tags/Node-js/">Node.js<span>1</span></a></li>
+		
+			<li><a href="/tags/AWS/">AWS<span>5</span></a></li>
+		
+			<li><a href="/tags/Vi/">Vi<span>1</span></a></li>
+		
+			<li><a href="/tags/JavaScript/">JavaScript<span>1</span></a></li>
+		
+			<li><a href="/tags/Linux/">Linux<span>2</span></a></li>
+		
+			<li><a href="/tags/CodeCommit/">CodeCommit<span>1</span></a></li>
+		
+			<li><a href="/tags/Red-Hat/">Red Hat<span>1</span></a></li>
+		
+			<li><a href="/tags/Java-9/">Java 9<span>1</span></a></li>
+		
+			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
+		
+			<li><a href="/tags/Apache/">Apache<span>3</span></a></li>
+		
+			<li><a href="/tags/Tomcat/">Tomcat<span>1</span></a></li>
+		
+			<li><a href="/tags/XPath/">XPath<span>1</span></a></li>
+		
+			<li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
+		
+			<li><a href="/tags/AEM/">AEM<span>2</span></a></li>
+		
+		
+		   <li><a href="/tags">...<span>23</span></a></li>
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>Recent Posts</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2021/09/06/AWS-API-Gateway-notes/" ><i class="fa fa-file-o"></i>AWS API Gateway notes</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/30/AWS-CI-CD-for-API-gateway/" ><i class="fa fa-file-o"></i>AWS CI/CD for API gateway</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/17/Create-AWS-Lamdba-Layer/" ><i class="fa fa-file-o"></i>Create AWS Lamdba Layer</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/12/Useful-software/" ><i class="fa fa-file-o"></i>Useful software</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/11/AEM-Get-referenced-links/" ><i class="fa fa-file-o"></i>AEM - Get incoming links to...</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/pnyiu" title="My Github account." target="_blank"]);">My Github</a></li>
+	
+		<li><i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/in/pnyiu/" title="My Linkin account." target="_blank"]);">My LinkedIn</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p>
+
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>

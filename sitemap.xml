@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/07/21/Node-js-notes/</loc>
+    
+    <lastmod>2021-10-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2017/08/14/Linux/</loc>
+    
+    <lastmod>2021-09-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/09/06/AWS-API-Gateway-notes/</loc>
+    
+    <lastmod>2021-09-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/08/30/AWS-CI-CD-for-API-gateway/</loc>
+    
+    <lastmod>2021-09-02</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2017/08/08/Hexo-Notes/</loc>
+    
+    <lastmod>2021-09-02</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2019/04/26/Use-CI-CD-on-AWS/</loc>
+    
+    <lastmod>2021-09-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2017/08/02/Git-Notes/</loc>
+    
+    <lastmod>2021-08-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/08/17/Create-AWS-Lamdba-Layer/</loc>
+    
+    <lastmod>2021-08-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/08/12/Useful-software/</loc>
+    
+    <lastmod>2021-08-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/08/11/AEM-Get-referenced-links/</loc>
+    
+    <lastmod>2021-08-11</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/08/09/Use-Python-to-read-HTML-element-by-XPath/</loc>
+    
+    <lastmod>2021-08-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/08/05/JavaScript-Notes/</loc>
+    
+    <lastmod>2021-08-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/Family-staycation/index.html</loc>
+    
+    <lastmod>2021-07-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/Family/index.html</loc>
+    
+    <lastmod>2021-07-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/categories/index.html</loc>
+    
+    <lastmod>2021-07-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2019/04/29/Akamai-CDN/</loc>
+    
+    <lastmod>2021-07-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/07/22/AEM-setup-cold-standy-author/</loc>
+    
+    <lastmod>2021-07-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2021/07/20/Upgrade-AWS-Lambda-Node-js-version/</loc>
+    
+    <lastmod>2021-07-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2019/04/29/Vi-Hints/</loc>
+    
+    <lastmod>2019-04-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2017/11/17/Docker-on-RHEL-7-4-Apache-HTTPD-and-Tomcat/</loc>
+    
+    <lastmod>2019-04-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2017/11/30/Access-subnet-behind-DD-WRT/</loc>
+    
+    <lastmod>2019-04-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2017/08/17/Oracle-VM-resize-root-disk/</loc>
+    
+    <lastmod>2019-04-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2017/08/01/HTTP-Cache/</loc>
+    
+    <lastmod>2019-04-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/2017/08/04/CORS-AJAX/</loc>
+    
+    <lastmod>2019-04-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/index.html</loc>
+    
+    <lastmod>2017-08-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/about/index.html</loc>
+    
+    <lastmod>2017-08-04</lastmod>
+    
+  </url>
+  
+
+  <url>
+    <loc>https://pnyiu.github.io/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Apache/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Tomcat/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Red-Hat/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Java-9/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Docker/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/CORS/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/AJAX/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Git/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Hexo/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Network/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Oracle-VM/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Linux/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/AWS/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/CodeBuild/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/CodeCommit/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/IAM/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Vi/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Node-js/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/AEM/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/JavaScript/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Python/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/XPath/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/tags/Software/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://pnyiu.github.io/categories/Web-server/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/categories/SCM/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/categories/Hexo/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/categories/AWS/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/categories/Hints/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/categories/Hexo/Notes/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/categories/JavaScript/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pnyiu.github.io/categories/JavaScript/Notes/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>

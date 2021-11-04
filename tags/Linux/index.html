@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/spacelab.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar  navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+<!-- title -->
+<div class="page-header ">
+  <h1 class="archive-title-tag title ">Linux</h1>
+</div>
+
+<div class="row page">
+  <!-- cols -->
+  
+  <div class="col-md-9">
+	
+
+	  <div id="top_search"></div>
+
+      
+         <!-- display as entry -->
+	     <div class="mypage">
+	       
+		     
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-08-17 </div>
+			<div class="article-title"><a href="/2017/08/17/Oracle-VM-resize-root-disk/" >Oracle VM - resize root disk</a></div>						
+		</h3>
+	
+
+
+		     <div class="entry">
+  <div class="row">
+	
+	
+		<ol>
+<li>Check current virtual disk<pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><code class="language-bash">[root@localhost ~]# fdisk -l &#x2F;dev&#x2F;xvda
+
+Disk &#x2F;dev&#x2F;xvda: 21.5 GB, 21474836480 bytes, 41943040 sectors
+Units &#x3D; sectors of 1 * 512 &#x3D; 512 bytes
+Sector size (logical&#x2F;physical): 512 bytes &#x2F; 512 bytes
+I&#x2F;O size (minimum&#x2F;optimal): 512 bytes &#x2F; 512 bytes
+Disk label type: dos
+Disk identifier: 0x000b3dc8
+
+    Device Boot      Start         End      Blocks   Id  System
+&#x2F;dev&#x2F;xvda1   *        2048     1026047      512000   83  Linux
+&#x2F;dev&#x2F;xvda2         1026048    41943039    20458496   8e  Linux LVM</code></pre>
+	
+	</div>
+  <a type="button" href="/2017/08/17/Oracle-VM-resize-root-disk/#more" class="btn btn-default more">Read More</a>
+</div>
+
+	       
+		     
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-08-14 </div>
+			<div class="article-title"><a href="/2017/08/14/Linux/" >Linux</a></div>						
+		</h3>
+	
+
+
+		     <div class="entry">
+  <div class="row">
+	
+	
+		<h3 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Print cookies to stdout</span><br><span class="line">curl -c - &#x27;http://google.com&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Change-terminal-directory-text-color"><a href="#Change-terminal-directory-text-color" class="headerlink" title="Change terminal directory text color"></a>Change terminal directory text color</h3><pre><code>LS_COLORS=$LS_COLORS:&#39;di=1;32:&#39; ; export LS_COLORS
+</code></pre>
+<p>The first number is how light or dark you want the color to be, followed by a semicolon, and then the actual number of the color.</p>
+<pre><code>Blue = 34
+Green = 32
+Light Green = 1;32
+Cyan = 36
+Red = 31
+Purple = 35
+Brown = 33
+Yellow = 1;33
+white = 1;37
+Light Grey = 0;37
+Black = 30
+Dark Grey= 1;30
+</code></pre>
+<p>Soure:<br>    <a target="_blank" rel="noopener" href="https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console">https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console</a></p>
+<h3 id="List-files-recursively-with-last-modified-date"><a href="#List-files-recursively-with-last-modified-date" class="headerlink" title="List files recursively with last modified date"></a>List files recursively with last modified date</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -print0 | xargs -0 ls -lt --time-style=&quot;+%F %T&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="cut-command"><a href="#cut-command" class="headerlink" title="cut command"></a>cut command</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-d -d&#x27;:&#x27;     # Use : as delimeter</span><br><span class="line">-c -c1-3     # 1-3 characters</span><br><span class="line">   -c3-      # 3rd character to end of line</span><br><span class="line">   -c-8      # start of line to 8th character</span><br><span class="line">-f -f1-4,6,7 # fields 1-4, 6 and 7</span><br><span class="line"></span><br><span class="line">cut -d&#x27;:&#x27; -f1-4,6,7 test.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Check-Linux-version"><a href="#Check-Linux-version" class="headerlink" title="Check Linux version"></a>Check Linux version</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/os-release</span><br></pre></td></tr></table></figure>
+
+<h3 id="Authenticating-to-Your-Server-Using-SSH-Keys"><a href="#Authenticating-to-Your-Server-Using-SSH-Keys" class="headerlink" title="Authenticating to Your Server Using SSH Keys"></a>Authenticating to Your Server Using SSH Keys</h3><ul>
+<li><p>Creating SSH Keys:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure></li>
+<li><p>Add public key to ~/.ssh/authorized_keys on target server</p>
+</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2017/08/14/Linux/#more" class="btn btn-default more">Read More</a>
+</div>
+
+	       
+	     </div>
+	     <div>
+	       <center>
+	         <div class="pagination">
+<ul class="pagination">
+	 
+</ul>
+</div>
+
+	       </center>
+	     </div>	
+      
+
+</div> <!-- col-md-9/col-md-12 -->
+
+
+<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+	<div class="widget">
+		<h4>Categories</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/AWS/">AWS<span>4</span></a></li>
+		
+			<li><a href="/categories/Hexo/">Hexo<span>1</span></a></li>
+		
+			<li><a href="/categories/Hints/">Hints<span>1</span></a></li>
+		
+			<li><a href="/categories/JavaScript/">JavaScript<span>1</span></a></li>
+		
+			<li><a href="/categories/Hexo/Notes/">Notes<span>1</span></a></li>
+		
+			<li><a href="/categories/JavaScript/Notes/">Notes<span>1</span></a></li>
+		
+			<li><a href="/categories/SCM/">SCM<span>1</span></a></li>
+		
+			<li><a href="/categories/Web-server/">Web server<span>1</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>Tag Cloud</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/Node-js/">Node.js<span>1</span></a></li>
+		
+			<li><a href="/tags/Tomcat/">Tomcat<span>1</span></a></li>
+		
+			<li><a href="/tags/Software/">Software<span>1</span></a></li>
+		
+			<li><a href="/tags/AJAX/">AJAX<span>1</span></a></li>
+		
+			<li><a href="/tags/IAM/">IAM<span>1</span></a></li>
+		
+			<li><a href="/tags/CORS/">CORS<span>1</span></a></li>
+		
+			<li><a href="/tags/Red-Hat/">Red Hat<span>1</span></a></li>
+		
+			<li><a href="/tags/Vi/">Vi<span>1</span></a></li>
+		
+			<li><a href="/tags/AWS/">AWS<span>5</span></a></li>
+		
+			<li><a href="/tags/Docker/">Docker<span>1</span></a></li>
+		
+			<li><a href="/tags/Apache/">Apache<span>3</span></a></li>
+		
+			<li><a href="/tags/Oracle-VM/">Oracle VM<span>1</span></a></li>
+		
+			<li><a href="/tags/Linux/">Linux<span>2</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
+			<li><a href="/tags/Network/">Network<span>1</span></a></li>
+		
+			<li><a href="/tags/CodeCommit/">CodeCommit<span>1</span></a></li>
+		
+			<li><a href="/tags/CodeBuild/">CodeBuild<span>2</span></a></li>
+		
+			<li><a href="/tags/AEM/">AEM<span>2</span></a></li>
+		
+			<li><a href="/tags/Java-9/">Java 9<span>1</span></a></li>
+		
+			<li><a href="/tags/Git/">Git<span>1</span></a></li>
+		
+		
+		   <li><a href="/tags">...<span>23</span></a></li>
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>Recent Posts</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2021/09/06/AWS-API-Gateway-notes/" ><i class="fa fa-file-o"></i>AWS API Gateway notes</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/30/AWS-CI-CD-for-API-gateway/" ><i class="fa fa-file-o"></i>AWS CI/CD for API gateway</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/17/Create-AWS-Lamdba-Layer/" ><i class="fa fa-file-o"></i>Create AWS Lamdba Layer</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/12/Useful-software/" ><i class="fa fa-file-o"></i>Useful software</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/11/AEM-Get-referenced-links/" ><i class="fa fa-file-o"></i>AEM - Get incoming links to...</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/pnyiu" title="My Github account." target="_blank"]);">My Github</a></li>
+	
+		<li><i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/in/pnyiu/" title="My Linkin account." target="_blank"]);">My LinkedIn</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p>
+
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>

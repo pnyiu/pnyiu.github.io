@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo Notes | Calvin&#39;s Home</title>
+  <meta name="author" content="Calvin Yiu">
+  
+  <meta name="description" content="InstallationBasic# Install Node.jssudo apt-get install nodejs# Install node package manager (npm)sudo apt-get install npm# Install git sudo apt-get install git # yum install git-core # Install hexonpm install -g hexo-cli
+Hexo site folder and install themeIn this blog, I will install freemind:
+$ hexo init blog #blog is the folder to contains all hexo related files$ cd blog$ npm install$ git clone https://github.com/wzpan/hexo-theme-freemind.git themes/freemind">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo Notes"/>
+  <meta property="og:site_name" content="Calvin&#39;s Home"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/spacelab.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight-default.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/comment.css" media="screen" type="text/css">
+
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103782633-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar  navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">Calvin&#39;s Home</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header ">		
+			<h1 class="title "> Hexo Notes</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Install Node.js</span></span><br><span class="line">sudo apt-get install nodejs</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install node package manager (npm)</span></span><br><span class="line">sudo apt-get install npm</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install git </span></span><br><span class="line">sudo apt-get install git <span class="comment"># yum install git-core </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Install hexo</span></span><br><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h3 id="Hexo-site-folder-and-install-theme"><a href="#Hexo-site-folder-and-install-theme" class="headerlink" title="Hexo site folder and install theme"></a>Hexo site folder and install theme</h3><p>In this blog, I will install <a target="_blank" rel="noopener" href="https://hexo.io/themes/">freemind</a>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init blog <span class="comment">#blog is the folder to contains all hexo related files</span></span><br><span class="line">$ <span class="built_in">cd</span> blog</span><br><span class="line">$ npm install</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/wzpan/hexo-theme-freemind.git themes/freemind</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="Install-hexo-admin"><a href="#Install-hexo-admin" class="headerlink" title="Install hexo admin"></a>Install hexo admin</h3><p>npm install –save hexo-admin</p>
+<h3 id="Update-site-and-theme-config-yml"><a href="#Update-site-and-theme-config-yml" class="headerlink" title="Update site and theme _config.yml:"></a>Update site and theme <code>_config.yml</code>:</h3><figure class="highlight yml"><figcaption><span>site._config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">Calvin&#x27;s</span> <span class="string">Home</span></span><br><span class="line"><span class="attr">subtitle:</span></span><br><span class="line"><span class="attr">description:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Calvin</span> <span class="string">Yiu</span></span><br><span class="line"><span class="attr">email:</span> <span class="string">calvin.ypn@gmail.com</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">default</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Hong_Kong</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">i18n_dir:</span> <span class="string">:lang</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">freemind</span> <span class="comment"># Use freemind as the theme</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/pnyiu/pnyiu.github.io.git</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><figcaption><span>theme._config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">links:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">title:</span> <span class="string">&quot;My Github&quot;</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">http://www.github.com/pnyiu</span></span><br><span class="line">    <span class="attr">intro:</span> <span class="string">&quot;My Github account.&quot;</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">&quot;fa fa-github&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">title:</span> <span class="string">&quot;My LinkedIn&quot;</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">https://www.linkedin.com/in/pnyiu/</span></span><br><span class="line">    <span class="attr">intro:</span> <span class="string">&quot;My Linkin account.&quot;</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">&quot;fa fa-linkedin&quot;</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">widgets:</span></span><br><span class="line"><span class="comment">#- search</span></span><br><span class="line"><span class="comment">#- recent_comments</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">category</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">tagcloud</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">recent_posts</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">links</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="comment"># Analytics</span></span><br><span class="line"><span class="attr">google_analytics:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">siteid:</span> <span class="string">UA-103782633-2</span></span><br><span class="line"><span class="attr">baidu_tongji:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">siteid:</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="comment"># share widgets</span></span><br><span class="line"><span class="attr">bdshare:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">jiathis:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="Create-special-pages-tags-categories-and-about-pages"><a href="#Create-special-pages-tags-categories-and-about-pages" class="headerlink" title="Create special pages: tags, categories and about pages"></a>Create special pages: tags, categories and about pages</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new page tags</span><br><span class="line">$ hexo new page about</span><br><span class="line">$ hexo new page categories</span><br></pre></td></tr></table></figure>
+
+<p>Update the layout of tags/index.md and categories/index.md to <code>tags</code> and <code>categories</code> respectively.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tree -L 2</span><br><span class="line">.</span><br><span class="line">├── about</span><br><span class="line">│   └── index.md</span><br><span class="line">├── categories</span><br><span class="line">│   └── index.md</span><br><span class="line">└── tags</span><br><span class="line">    └── index.md</span><br><span class="line">$ cat tags/index.md</span><br><span class="line">title: Tags</span><br><span class="line">layout: tags</span><br><span class="line">---</span><br><span class="line">$ cat categories/index.md</span><br><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">layout: categories</span><br><span class="line">date: 2017-08-02 16:51:54</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Basic-configuratons"><a href="#Basic-configuratons" class="headerlink" title="Basic configuratons"></a>Basic configuratons</h2><h3 id="Website-icon-favicon"><a href="#Website-icon-favicon" class="headerlink" title="Website icon - favicon"></a>Website icon - favicon</h3><p>Create an image in png format and save it under the path specified in theme.config:</p>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span> <span class="string">&quot;favicon/favicon.png&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Install-filters"><a href="#Install-filters" class="headerlink" title="Install filters"></a>Install filters</h2><h3 id="hexo-filter-flowchart"><a href="#hexo-filter-flowchart" class="headerlink" title="hexo-filter-flowchart"></a>hexo-filter-flowchart</h3><figure class="highlight plaintext"><figcaption><span>npm</span><a target="_blank" rel="noopener" href="https://github.com/bubkoo/hexo-filter-flowchart">hexo-filter-flowchart</a></figcaption><table><tr><td class="code"><pre><span class="line">npm install --save hexo-filter-flowchart</span><br></pre></td></tr></table></figure>
+
+<span class="label label-info">Optional</span>
+
+<p>You may download the required Javascript files to your local server: </p>
+<ol>
+<li>Download <a target="_blank" rel="noopener" href="http://flowchart.js.org/">flowchart.js</a> and <a target="_blank" rel="noopener" href="http://dmitrybaranovskiy.github.io/raphael/">Raphaël</a>.</li>
+<li>Copy the above two files to \themes\freemind\source\js (substitute freemind to match your theme folder name)</li>
+</ol>
+<p>If you choose to use the files saved locally, then you have to modify site _config.yml:</p>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">flowchart:</span></span><br><span class="line">  <span class="attr">raphael:</span> <span class="string">/js/raphael.js</span>  <span class="comment"># optional, the source url of raphael.js</span></span><br><span class="line">  <span class="attr">flowchart:</span> <span class="string">/js/flowchart.js</span> <span class="comment"># optional, the source url of flowchart.js</span></span><br><span class="line">  <span class="attr">options:</span> <span class="comment"># options used for `drawSVG`  </span></span><br></pre></td></tr></table></figure>
+
+<p>If it works, then you will see below flowchart:</p>
+<div id="flowchart-0" class="flow-chart"></div>
+
+<h2 id="Useful-hexo-or-markdown-syntax"><a href="#Useful-hexo-or-markdown-syntax" class="headerlink" title="Useful hexo or markdown syntax"></a>Useful hexo or markdown syntax</h2><h3 id="Useful-links"><a href="#Useful-links" class="headerlink" title="Useful links"></a>Useful links</h3><p><a target="_blank" rel="noopener" href="https://www.hahack.com/hexo-theme-freemind-blog/2014/03/16/tag-plugins/">Tag Plugins</a></p>
+<h3 id="Delimeter-for-excerpt-and-full-content"><a href="#Delimeter-for-excerpt-and-full-content" class="headerlink" title="Delimeter for excerpt and full content"></a>Delimeter for excerpt and full content</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock line_number:false %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![](/images/2021-07-21 10_35_23-CodeBuild - AWS Developer Tools.png)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span> <span class="literal">true</span> <span class="comment"># Default: off</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Tag1</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Tag2</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Cat1</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Cat2</span></span><br></pre></td></tr></table></figure>
+<h3 id="Commonly-used-commands"><a href="#Commonly-used-commands" class="headerlink" title="Commonly used commands"></a>Commonly used commands</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Working in `source` branch</span></span><br><span class="line">$ git status</span><br><span class="line">On branch <span class="built_in">source</span></span><br><span class="line">Your branch and <span class="string">&#x27;origin/source&#x27;</span> have diverged</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start hexo server</span></span><br><span class="line">hexo server <span class="comment"># preview draft post, add --draft</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Generate a new page</span></span><br><span class="line">hexo new <span class="string">&quot;title&quot;</span> <span class="comment"># e.g. hexo new &quot;Use CI/CD on AWS&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Generate draft page (will not generate and deploy)</span></span><br><span class="line">hexo new draft <span class="string">&quot;title&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Generate static files</span></span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line"><span class="comment"># Config for github (https)</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/pnyiu/pnyiu.github.io.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># Config for github (ssh)</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@github.com:pnyiu/pnyiu.github.io.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># Deploy to github</span></span><br><span class="line">hexo deploy</span><br><span class="line"></span><br></pre></td></tr></table></figure><script src="/js/raphael.js"></script><script src="/js/flowchart.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: Start|past:>http://www.google.com[blank]
+e=>end: End:>http://www.google.com
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes
+or No?|approved:>http://www.google.com
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|request
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script>	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2017/08/14/Linux/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2017/08/04/CORS-AJAX/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-08-08 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Hexo/">Hexo<span>1</span></a></li> <li><a href="/categories/Hexo/Notes/">Notes<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Hexo/">Hexo<span>1</span></a></li>
+    </ul>
+	</div>
+	
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Installation"><span class="toc-article-text">Installation</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Basic"><span class="toc-article-text">Basic</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hexo-site-folder-and-install-theme"><span class="toc-article-text">Hexo site folder and install theme</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Install-hexo-admin"><span class="toc-article-text">Install hexo admin</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Update-site-and-theme-config-yml"><span class="toc-article-text">Update site and theme _config.yml:</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Create-special-pages-tags-categories-and-about-pages"><span class="toc-article-text">Create special pages: tags, categories and about pages</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Basic-configuratons"><span class="toc-article-text">Basic configuratons</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Website-icon-favicon"><span class="toc-article-text">Website icon - favicon</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Install-filters"><span class="toc-article-text">Install filters</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#hexo-filter-flowchart"><span class="toc-article-text">hexo-filter-flowchart</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Useful-hexo-or-markdown-syntax"><span class="toc-article-text">Useful hexo or markdown syntax</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Useful-links"><span class="toc-article-text">Useful links</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Delimeter-for-excerpt-and-full-content"><span class="toc-article-text">Delimeter for excerpt and full content</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Code"><span class="toc-article-text">Code</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Image"><span class="toc-article-text">Image</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Front-matter"><span class="toc-article-text">Front-matter</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Commonly-used-commands"><span class="toc-article-text">Commonly used commands</span></a></li></ol></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Calvin Yiu
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p>
+
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+
+<!-- syntax highlighting -->
+
+
+</body>
+   </html>
